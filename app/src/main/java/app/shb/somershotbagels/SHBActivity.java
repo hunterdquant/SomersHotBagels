@@ -1,5 +1,6 @@
 package app.shb.somershotbagels;
 
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -9,12 +10,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class SHBActivity extends AppCompatActivity {
+public class SHBActivity extends AppCompatActivity implements OrderTransfer {
+
+    private Order order;
+    SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shb);
+
+        prefs = getPreferences(MODE_PRIVATE);
+
+
+        order = new Order();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -66,4 +75,11 @@ public class SHBActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public Order getOrder() {
+        return order;
+    }
+
+    public SharedPreferences getPrefs() {
+        return prefs;
+    }
 }
