@@ -3,15 +3,17 @@ package app.shb.somershotbagels;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 
 /**
  * Created by hunter on 3/25/16.
  */
 public class FragmentPagerAdapter extends FragmentStatePagerAdapter {
     int numOfTabs;
-
+    CartFragment cartTab;
     public FragmentPagerAdapter(FragmentManager fm, int numOfTabs) {
-        super(fm);
+        super(fm);;
         this.numOfTabs = numOfTabs;
     }
 
@@ -26,7 +28,7 @@ public class FragmentPagerAdapter extends FragmentStatePagerAdapter {
                 HomeFragment homeTab = new HomeFragment();
                 return homeTab;
             case 2:
-                CartFragment cartTab = new CartFragment();
+                cartTab = new CartFragment();
                 return cartTab;
             default:
                 return null;
@@ -36,5 +38,9 @@ public class FragmentPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return numOfTabs;
+    }
+
+    public CartFragment getCart() {
+        return cartTab;
     }
 }

@@ -9,4 +9,5 @@ import android.content.SharedPreferences;
 public interface OrderTransfer {
     public Order getOrder();
     public SharedPreferences getPrefs();
+    public void updateCart();
 }

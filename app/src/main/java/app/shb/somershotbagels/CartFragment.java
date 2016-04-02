@@ -3,6 +3,7 @@ package app.shb.somershotbagels;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,41 +22,20 @@ public class CartFragment extends Fragment {
     private Order order;
     ListView listView;
     private List<String> itemList;
+    private ArrayAdapter<String> arrayAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.cart_tab_fragment, container, false);
-        order = new Order();
         listView = (ListView) root.findViewById(R.id.cartList);
         itemList = new ArrayList<String>();
-        order.addItem(new Item("Bagel"));
-        order.addItem(new Item("Orange Juice"));
-        order.addItem(new Item("Buttered Toast"));
-        order.addItem(new Item("Eggs"));
-        order.addItem(new Item("Egg begal cheese"));
-        order.addItem(new Item("Breakfast burrito"));
-        order.addItem(new Item("Cream of wheat"));
-        order.addItem(new Item("oatmeal"));
-        order.addItem(new Item("cereal"));
-        order.addItem(new Item("coffee"));
-        order.addItem(new Item("Grapefruit"));
-        order.addItem(new Item("Bagel"));
-        order.addItem(new Item("Orange Juice"));
-        order.addItem(new Item("Buttered Toast"));
-        order.addItem(new Item("Eggs"));
-        order.addItem(new Item("Egg begal cheese"));
-        order.addItem(new Item("Breakfast burrito"));
-        order.addItem(new Item("Cream of wheat"));
-        order.addItem(new Item("oatmeal"));
-        order.addItem(new Item("cereal"));
-        order.addItem(new Item("coffee"));
-        order.addItem(new Item("Grapefruit"));
-        populateItemList();
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+
+        arrayAdapter = new ArrayAdapter<String>(
                 getActivity(),
                 R.layout.list,
                 itemList );
-
+        populateItemList();
+        arrayAdapter.setNotifyOnChange(true);
         listView.setAdapter(arrayAdapter);
         return root;
     }
@@ -63,6 +43,11 @@ public class CartFragment extends Fragment {
         for (Item item : order.getItems()) {
             itemList.add(item.toString());
         }
+    }
+
+    public void updateList() {
+        populateItemList();
+        arrayAdapter.notifyDataSetChanged();
     }
 
     @Override

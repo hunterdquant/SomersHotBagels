@@ -3,10 +3,12 @@ package app.shb.somershotbagels;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -14,16 +16,31 @@ public class SHBActivity extends AppCompatActivity implements OrderTransfer {
 
     private Order order;
     SharedPreferences prefs;
+    FragmentPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        order = new Order();
+
+        order.addItem(new Item("Bagel"));
+        order.addItem(new Item("Orange Juice"));
+        order.addItem(new Item("Buttered Toast"));
+        order.addItem(new Item("Eggs"));
+        order.addItem(new Item("Egg begal cheese"));
+        order.addItem(new Item("Breakfast burrito"));
+        order.addItem(new Item("Cream of wheat"));
+        order.addItem(new Item("oatmeal"));
+        order.addItem(new Item("cereal"));
+        order.addItem(new Item("coffee"));
+        order.addItem(new Item("Grapefruit"));
+        Log.d("test", order.getItems().toString());
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shb);
 
         prefs = getPreferences(MODE_PRIVATE);
-
-
-        order = new Order();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -36,28 +53,30 @@ public class SHBActivity extends AppCompatActivity implements OrderTransfer {
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager= (ViewPager) findViewById(R.id.pager);
-        final FragmentPagerAdapter adapter = new FragmentPagerAdapter(
+        adapter = new FragmentPagerAdapter(
                 getSupportFragmentManager(),
                 tabLayout.getTabCount()
         );
+
+        viewPager.setOffscreenPageLimit(2);
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
+                viewPager.setCurrentItem(tab.getPosition(), true);
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
+
+        viewPager.setCurrentItem(1);
     }
 
     @Override
@@ -81,5 +100,9 @@ public class SHBActivity extends AppCompatActivity implements OrderTransfer {
 
     public SharedPreferences getPrefs() {
         return prefs;
+    }
+
+    public void updateCart() {
+        adapter.getCart().updateList();
     }
 }
