@@ -3,8 +3,6 @@ package app.shb.somershotbagels;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 
 /**
  * Created by hunter on 3/25/16.

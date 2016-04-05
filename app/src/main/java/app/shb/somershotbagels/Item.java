@@ -20,6 +20,10 @@ public class Item {
         this.optionList = new ArrayList<Option>();
     }
 
+    public void addOption(Option option) {
+        optionList.add(option);
+    }
+
     public String getName() {
         return this.name;
     }
@@ -28,7 +32,7 @@ public class Item {
     public String toString() {
         String s = this.name;
         for (Option o : optionList) {
-            s += '\t' + o.toString();
+            s += "\n\t\t" + o.toString();
         }
         return s;
     }

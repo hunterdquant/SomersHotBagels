@@ -1,9 +1,7 @@
 package app.shb.somershotbagels;
 
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,20 +20,6 @@ public class SHBActivity extends AppCompatActivity implements OrderTransfer {
     protected void onCreate(Bundle savedInstanceState) {
 
         order = new Order();
-
-        order.addItem(new Item("Bagel"));
-        order.addItem(new Item("Orange Juice"));
-        order.addItem(new Item("Buttered Toast"));
-        order.addItem(new Item("Eggs"));
-        order.addItem(new Item("Egg begal cheese"));
-        order.addItem(new Item("Breakfast burrito"));
-        order.addItem(new Item("Cream of wheat"));
-        order.addItem(new Item("oatmeal"));
-        order.addItem(new Item("cereal"));
-        order.addItem(new Item("coffee"));
-        order.addItem(new Item("Grapefruit"));
-        Log.d("test", order.getItems().toString());
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shb);
@@ -88,7 +72,7 @@ public class SHBActivity extends AppCompatActivity implements OrderTransfer {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.textView) {
+        if (id == R.id.categoryName) {
             return true;
         }
         return super.onOptionsItemSelected(item);

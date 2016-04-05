@@ -40,6 +40,7 @@ public class CartFragment extends Fragment {
         return root;
     }
     private void populateItemList() {
+        itemList.clear();
         for (Item item : order.getItems()) {
             itemList.add(item.toString());
         }

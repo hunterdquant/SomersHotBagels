@@ -34,8 +34,107 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         orderList = new ArrayList<Order>();
+        Order hist1 = new Order("The goto statement");
+        Order hist2 = new Order("Ode to Ed");
+        Order hist3 = new Order("The bulk");
+        Order hist4 = new Order("#Makin'Grains");
+        Order hist5 = new Order("The saturday morning cartoon");
+        Order hist6 = new Order("The end of the road");
 
-        orderList.add(order);;
+        Item item = new Item("Bagel");
+        item.addOption(new Option() {
+            @Override
+            public String toString() {
+                return "Quantity: 6";
+            }
+        });
+        item.addOption(new Option() {
+            @Override
+            public String toString() {
+                return "Cream Cheese: Cranberry";
+            }
+        });
+        hist1.addItem(item);
+        item = new Item("Orange Juice");
+        hist1.addItem(item);
+        item = new Item("Buttered Toast");
+        item.addOption(new Option() {
+            @Override
+            public String toString() {
+                return "Toasted";
+            }
+        });
+        hist2.addItem(new Item("Buttered Toast"));
+        item = new Item("Orange Juice");
+        item.addOption(new Option() {
+            @Override
+            public String toString() {
+                return "Style: Scrambled";
+            }
+        });
+        item.addOption(new Option() {
+            @Override
+            public String toString() {
+                return "Vegetables: Spinach";
+            }
+        });
+        hist2.addItem(item);
+        item = new Item("Egg bagel cheese");
+        item.addOption(new Option() {
+            @Override
+            public String toString() {
+                return "Quantity: 2";
+            }
+        });
+        hist3.addItem(item);
+        item = new Item("Breakfast Burrito");
+        item.addOption(new Option() {
+            @Override
+            public String toString() {
+                return "Quantity: 12";
+            }
+        });
+        hist3.addItem(item);
+        item = new Item("Cream of wheat");
+        hist4.addItem(item);
+        item = new Item("Oatmeal");
+        item.addOption(new Option() {
+            @Override
+            public String toString() {
+                return "Type: Apple cinnamon";
+            }
+        });
+        hist4.addItem(item);
+        item = new Item("Cereal");
+        item.addOption(new Option() {
+            @Override
+            public String toString() {
+                return "Type: Honey Bunches of Oats with almonds";
+            }
+        });
+        hist5.addItem(item);
+        item = new Item("Coffee");
+        item.addOption(new Option() {
+            @Override
+            public String toString() {
+                return "Sugar: 10 packets";
+            }
+        });
+        hist6.addItem(item);
+        item = new Item("Grapefruit");
+        item.addOption(new Option() {
+            @Override
+            public String toString() {
+                return "Quantity: 9001";
+            }
+        });
+        hist6.addItem(item);
+        orderList.add(hist1);
+        orderList.add(hist2);
+        orderList.add(hist3);
+        orderList.add(hist4);
+        orderList.add(hist5);
+        orderList.add(hist6);
 
 
         final SharedPreferences prefs = orderTransfer.getPrefs();

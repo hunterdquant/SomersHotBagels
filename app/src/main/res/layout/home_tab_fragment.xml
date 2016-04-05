@@ -4,12 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView"
+
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Home"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
-
+        android:id="@+id/categoryList"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
 </RelativeLayout>
