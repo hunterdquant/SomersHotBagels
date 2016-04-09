@@ -20,7 +20,7 @@ public class FragmentPagerAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
-                HistoryFragment histTab = new HistoryFragment();
+                FavoriteFragment histTab = new FavoriteFragment();
                 return histTab;
             case 1:
                 HomeFragment homeTab = new HomeFragment();
