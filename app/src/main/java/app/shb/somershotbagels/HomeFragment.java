@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -35,6 +36,12 @@ public class HomeFragment extends Fragment {
             categoryList.add(category);
         }
         listView = (ListView) root.findViewById(R.id.categoryList);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id){
+                
+            };
+        });
         ImageTextBaseAdapter adapter = new ImageTextBaseAdapter(getActivity(), categoryList);
         listView.setAdapter(adapter);
         return root;
