@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -26,6 +27,20 @@ public class ListItemsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceBundle) {
         super.onCreate(savedInstanceBundle);
         setContentView(R.layout.activity_list_items);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("text", "back pressed");
+                finish();
+            }
+        });
+
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         Gson gson = new Gson();
         itemList = MenuRetrieval.retreveCategory(MenuRetrieval.CATEGORY_NAMES[getIntent().getIntExtra("CAT_NUM", 0)]);
         order = gson.fromJson(getIntent().getStringExtra("ORDER"), Order.class);
