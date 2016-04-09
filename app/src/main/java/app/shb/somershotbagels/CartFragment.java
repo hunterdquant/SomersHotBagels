@@ -6,15 +6,19 @@ import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.PopupMenu;
 import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -44,6 +48,32 @@ public class CartFragment extends Fragment {
                 itemList );
         populateItemList();
         arrayAdapter.setNotifyOnChange(true);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                //Creating the instance of PopupMenu
+                PopupMenu popup = new PopupMenu(getActivity(), listView);
+                //Inflating the Popup using xml file
+                popup.getMenuInflater().inflate(R.menu.cart_popup, popup.getMenu());
+
+                //registering popup with OnMenuItemClickListener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+                        if (item.getTitle().equals("Remove")) {
+                            order.removeItem(position);
+                            orderTransfer.updateCart();
+                            Toast.makeText(getActivity(), "Item removed from the cart.", Toast.LENGTH_LONG).show();
+                        }
+                        return true;
+                    }
+                });
+
+                popup.show();//showing popup menu
+            }
+        });
+
         listView.setAdapter(arrayAdapter);
 
         Button favorite = (Button) root.findViewById(R.id.favoriteButton);

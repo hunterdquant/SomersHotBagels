@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class Order {
     private String orderName;
-    private List<Item> items;
+    private List<Item> itemList;
 
     public Order() {
         this("cart");
@@ -17,19 +17,19 @@ public class Order {
 
     public Order(String orderName) {
         this.orderName = orderName;
-        this.items = new ArrayList<Item>();
+        this.itemList = new ArrayList<Item>();
     }
 
     public void addItem(Item item) {
-        items.add(item);
+        itemList.add(item);
     }
 
     public void appendOrder(Order order) {
-        items.addAll(order.getItems());
+        itemList.addAll(order.getItems());
     }
 
     public List<Item> getItems() {
-        return items;
+        return itemList;
     }
 
     public String getOrderName() {
@@ -40,10 +40,14 @@ public class Order {
         orderName = name;
     }
 
+    public void removeItem(int position) {
+        itemList.remove(position);
+    }
+
     @Override
     public String toString() {
         String s = "";
-        for (Item item : items) {
+        for (Item item : itemList) {
             s += item.toString();
         }
         return s;
