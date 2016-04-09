@@ -1,183 +1,192 @@
 package app.shb.somershotbagels;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Robert on 4/9/2016.
  */
 
 
+
 //TODO - add options to the items
 public class MenuRetrieval {
-    public static void buildMenu(Category category){
-        switch (category.getName()) {
+
+    public static final String[] CATEGORY_NAMES = {"Beverages", "Bagels", "Breakfast Foods", "Baked Goods", "Wraps", "Sandwiches", "Salads"};
+    public static final int[] IMAGE_IDS = {R.mipmap.beverages, R.mipmap.bagels, R.mipmap.breakfast, R.mipmap.bakedgoods, R.mipmap.wrap, R.mipmap.sandwiches, R.mipmap.salad};
+    public static List<Item> retreveCategory(String menuName){
+        List<Item> itemList = new ArrayList<Item>();
+        switch (menuName) {
             case "Beverages":
-                category.addItem(new Item("Coffee", category));
-                category.addItem(new Item("Decaf Coffee", category));
-                category.addItem(new Item("Tea", category));
-                category.addItem(new Item("Hot Chocolate", category));
-                category.addItem(new Item("Espresso", category));
-                category.addItem(new Item("Latte", category));
-                category.addItem(new Item("Chai Tea", category));
-                category.addItem(new Item("Iced Coffee", category));
-                category.addItem(new Item("Iced Tea", category));
-                category.addItem(new Item("Iced Cappuccino", category));
+                itemList.add(new Item("Coffee"));
+                itemList.add(new Item("Decaf Coffee"));
+                itemList.add(new Item("Tea"));
+                itemList.add(new Item("Hot Chocolate"));
+                itemList.add(new Item("Espresso"));
+                itemList.add(new Item("Latte"));
+                itemList.add(new Item("Chai Tea"));
+                itemList.add(new Item("Iced Coffee"));
+                itemList.add(new Item("Iced Tea"));
+                itemList.add(new Item("Iced Cappuccino"));
                 break;
             case "Bagels":
-               /* category.addItem(new Item("Plain Bagel", category));
-                category.addItem(new Item("Poppy Seed Bagel", category));
-                category.addItem(new Item("Sesame Seed Bagel", category));
-                category.addItem(new Item("Cinnamon Raisin Bagel", category));
-                category.addItem(new Item("Everything Bagel", category));
-                category.addItem(new Item("Wheat Bagel", category));
-                category.addItem(new Item("Wheat Everything Bagel", category));
-                category.addItem(new Item("Egg Bagel", category));
-                category.addItem(new Item("Egg Everything Bagel", category));
-                category.addItem(new Item("Marble Bagel", category));
-                category.addItem(new Item("Pumpernickel Bagel", category));
-                category.addItem(new Item("Pumpernickel Seasame Bagel", category));
-                category.addItem(new Item("7-Grain Bagel", category));
-                category.addItem(new Item("Onion Bagel", category));
-                category.addItem(new Item("Garlic Bagel", category));
-                category.addItem(new Item("Salt Bagel", category));
-                category.addItem(new Item("Berry Bagel", category));
-                category.addItem(new Item("Baker's Dozen", category));*/
-                category.addItem(new Item("Bagel", category));
-                category.addItem(new Item("Bagel Pop", category));
-                category.addItem(new Item("Kaiser Roll", category));
-                category.addItem(new Item("Mini-Bagel", category));
-/*                category.addItem(new Item("Everything Mini-Bagel", category));
-                category.addItem(new Item("Plain Mini-Bagel", category));
-                category.addItem(new Item("Poppy Seed Mini-Bagel", category));
-                category.addItem(new Item("Sesame Seed Mini-Bagel", category));
-                category.addItem(new Item ("Cinnamon Raisin Mini-Bagel", category));*/
+               /* itemList.add(new Item("Plain Bagel"));
+                itemList.add(new Item("Poppy Seed Bagel"));
+                itemList.add(new Item("Sesame Seed Bagel"));
+                itemList.add(new Item("Cinnamon Raisin Bagel"));
+                itemList.add(new Item("Everything Bagel"));
+                itemList.add(new Item("Wheat Bagel"));
+                itemList.add(new Item("Wheat Everything Bagel"));
+                itemList.add(new Item("Egg Bagel"));
+                itemList.add(new Item("Egg Everything Bagel"));
+                itemList.add(new Item("Marble Bagel"));
+                itemList.add(new Item("Pumpernickel Bagel"));
+                itemList.add(new Item("Pumpernickel Seasame Bagel"));
+                itemList.add(new Item("7-Grain Bagel"));
+                itemList.add(new Item("Onion Bagel"));
+                itemList.add(new Item("Garlic Bagel"));
+                itemList.add(new Item("Salt Bagel"));
+                itemList.add(new Item("Berry Bagel"));
+                itemList.add(new Item("Baker's Dozen"));*/
+                itemList.add(new Item("Bagel"));
+                itemList.add(new Item("Bagel Pop"));
+                itemList.add(new Item("Kaiser Roll"));
+                itemList.add(new Item("Mini-Bagel"));
+/*                itemList.add(new Item("Everything Mini-Bagel"));
+                itemList.add(new Item("Plain Mini-Bagel"));
+                itemList.add(new Item("Poppy Seed Mini-Bagel"));
+                itemList.add(new Item("Sesame Seed Mini-Bagel"));
+                itemList.add(new Item ("Cinnamon Raisin Mini-Bagel"));*/
                 break;
             case "Breakfast Foods":
-                category.addItem(new Item("Bacon, Egg, and Cheese", category));
-                category.addItem(new Item("One Egg", category));
-                category.addItem(new Item("Two Eggs", category));
-                category.addItem(new Item("Egg and Cheese", category));
-                category.addItem(new Item("Egg and Bacon", category));
-                category.addItem(new Item("Egg and Ham", category));
-                category.addItem(new Item("Egg and Sausage", category));
-                category.addItem(new Item("Ultimate Sandwich", category,
+                itemList.add(new Item("Bacon, Egg, and Cheese"));
+                itemList.add(new Item("One Egg"));
+                itemList.add(new Item("Two Eggs"));
+                itemList.add(new Item("Egg and Cheese"));
+                itemList.add(new Item("Egg and Bacon"));
+                itemList.add(new Item("Egg and Ham"));
+                itemList.add(new Item("Egg and Sausage"));
+                itemList.add(new Item("Ultimate Sandwich",
                         "Two eggs, bacon sausage, ham, and cheese"));
-                category.addItem(new Item("Breakfast Burrito", category,
+                itemList.add(new Item("Breakfast Burrito",
                         "Two scrambled eggs, sausage, scallions, green " +
                         "peppers, cheddar, cheese on a wrap. Sour cream " +
                         "and salsa on the side"));
-                category.addItem(new Item("Tony's Wrap", category,
+                itemList.add(new Item("Tony's Wrap",
                         "Four egg whites, turkey, spinach, hot peppers, alpine lace Swiss"));
-                category.addItem(new Item("American Omelette", category,
+                itemList.add(new Item("American Omelette",
                         "Three eggs, bacon, tomato, American cheese"));
-                category.addItem(new Item("Italian Omelette", category,
+                itemList.add(new Item("Italian Omelette",
                         "Three eggs, ham, mozzarella, tomato"));
-                category.addItem(new Item("Mexican Omelette", category,
+                itemList.add(new Item("Mexican Omelette",
                         "Three eggs, sausage, peppers, onions, pepper jack cheese"));
-                category.addItem(new Item("Western Omelette", category,
+                itemList.add(new Item("Western Omelette",
                         "Three eggs, ham, peppers, Swiss cheese"));
-                category.addItem(new Item("Healthy Omelette", category,
+                itemList.add(new Item("Healthy Omelette",
                         "Four egg whites, spinach, tomato, alpine lace Swiss"));
-                category.addItem(new Item("Steak Omelette", category,
+                itemList.add(new Item("Steak Omelette",
                         "Four egg whites, roast beef, onions, peppers, cheddar"));
-                category.addItem(new Item("Spicy Chicken Omelette", category,
+                itemList.add(new Item("Spicy Chicken Omelette",
                         "Four egg whites, buffalo chicken, onions, provolone, hot sauce, ranch"));
-                category.addItem(new Item("California Breakfast Wrap", category,
+                itemList.add(new Item("California Breakfast Wrap",
                         "Four egg whites, avocado, bacon, tomato, Swiss"));
                 break;
             case "Baked Goods":
-                category.addItem(new Item("Muffin", category));
-                category.addItem(new Item("Scone", category));
-                category.addItem(new Item("Croissant", category));
-                category.addItem(new Item("Apple Turnover", category));
-                category.addItem(new Item("Cinnamon Bun", category));
-                category.addItem(new Item("Black & White Cookie", category));
-                category.addItem(new Item("Pound Cake", category));
+                itemList.add(new Item("Muffin"));
+                itemList.add(new Item("Scone"));
+                itemList.add(new Item("Croissant"));
+                itemList.add(new Item("Apple Turnover"));
+                itemList.add(new Item("Cinnamon Bun"));
+                itemList.add(new Item("Black & White Cookie"));
+                itemList.add(new Item("Pound Cake"));
                 break;
             case "Wraps":
-                category.addItem(new Item("Cracked Pepper Turkey", category,
+                itemList.add(new Item("Cracked Pepper Turkey",
                         "Turkey, Alpine Lace Swiss, lettuce, tomato and ranch dressing"));
-                category.addItem(new Item("Grilled Chicken Supreme", category,
+                itemList.add(new Item("Grilled Chicken Supreme",
                         "Grilled chicken, roasted peppers, fresh mozzarella," +
                         " and balsamic vinaigrette"));
-                category.addItem(new Item("Healthy Wrap", category,
+                itemList.add(new Item("Healthy Wrap",
                         "Turkey, spring mix, tomato, cucumber and ranch dressing"));
-                category.addItem(new Item("Tuna Special", category,
+                itemList.add(new Item("Tuna Special",
                         "Vegetable tuna, Muenster, lettuce, tomato and red onion"));
-                category.addItem(new Item("Buffalo Chicken", category,
+                itemList.add(new Item("Buffalo Chicken",
                         "Buffalo chicken, cheddar, lettuce, tomato, red onion " +
                                 "and bleu cheese dressing"));
-                category.addItem(new Item("Chicken Salad BLT", category));
-                category.addItem(new Item("Egg Salad BLT", category));
-                category.addItem(new Item("Tuna Salad BLT", category));
-                category.addItem(new Item("Island Wrap", category,
+                itemList.add(new Item("Chicken Salad BLT"));
+                itemList.add(new Item("Egg Salad BLT"));
+                itemList.add(new Item("Tuna Salad BLT"));
+                itemList.add(new Item("Island Wrap",
                         "Grilled chicken, romaine, dried cranberries, walnuts," +
                         " and lite raspberry dressing"));
-                category.addItem(new Item("Chipotle Chicken", category,
+                itemList.add(new Item("Chipotle Chicken",
                         "Grilled chicken, romaine, tomato, red onion, bacon" +
                         " and chipotle dressing"));
-                category.addItem(new Item("Turkey Club", category,
+                itemList.add(new Item("Turkey Club",
                         "Turkey, bacon, lettuce, tomato, and mayo"));
-                category.addItem(new Item("Chicken Caesar", category,
+                itemList.add(new Item("Chicken Caesar",
                         "Grilled chicken, romaine, parmesan, and Caesar dressing"));
-                category.addItem(new Item("Roast Beef", category,
+                itemList.add(new Item("Roast Beef",
                         "Roast beef, muenster, lettuce, tomato, red onion," +
                         " and horseradish Dijon dressing"));
-                category.addItem(new Item("Italian Combo", category,
+                itemList.add(new Item("Italian Combo",
                         "Mortadella, salami, pepperoni and provolone"));
-                category.addItem(new Item("American Combo", category,
+                itemList.add(new Item("American Combo",
                         "Ham, roast beef, turkey, and American cheese"));
-                category.addItem(new Item("Asian Chicken Wrap", category,
+                itemList.add(new Item("Asian Chicken Wrap",
                         "Grilled Asian chicken, spring mix, tomato, carrots, " +
                         "scallions and Asian dressing"));
-                category.addItem(new Item("Honey Turkey", category,
+                itemList.add(new Item("Honey Turkey",
                         "Honey turkey, lettuce, tomato and honey mustard dressing"));
-                category.addItem(new Item("Garden Veggie", category,
+                itemList.add(new Item("Garden Veggie",
                         "Spring mix, tomato, red onion, carrots, and ranch dressing"));
-                category.addItem(new Item("Honey Ham", category,
+                itemList.add(new Item("Honey Ham",
                         "Honey ham, pepper jack cheese, lettuce, tomato and" +
                         " honey mustard dressing"));
-                category.addItem(new Item("Ham and Swiss", category,
+                itemList.add(new Item("Ham and Swiss",
                         "Ham, swiss, lettuce, tomato, mustard, and mayo"));
-                category.addItem(new Item("Spring Wrap", category,
+                itemList.add(new Item("Spring Wrap",
                         "Grilled chicken, leaf lettuce, avocado, cucumber," +
                         " tomato, and read onion"));
                 break;
             case "Sandwiches":
-                category.addItem(new Item("Veggie Tuna", category));
-                category.addItem(new Item("Asian Grilled Chicken", category));
-                category.addItem(new Item("Egg Salad", category));
-                category.addItem(new Item("Chicken Salad", category));
-                category.addItem(new Item("Whitefish Salad", category));
-                category.addItem(new Item("Sliced Nova Scotia Salmon", category));
-                category.addItem(new Item("Boars Head Deli Sandwich", category));
-                category.addItem(new Item("BLT", category));
-                category.addItem(new Item("American Combo", category));
-                category.addItem(new Item("Cheese", category));
-                category.addItem(new Item("The Lunch Speical", category,
+                itemList.add(new Item("Veggie Tuna"));
+                itemList.add(new Item("Asian Grilled Chicken"));
+                itemList.add(new Item("Egg Salad"));
+                itemList.add(new Item("Chicken Salad"));
+                itemList.add(new Item("Whitefish Salad"));
+                itemList.add(new Item("Sliced Nova Scotia Salmon"));
+                itemList.add(new Item("Boars Head Deli Sandwich"));
+                itemList.add(new Item("BLT"));
+                itemList.add(new Item("American Combo"));
+                itemList.add(new Item("Cheese"));
+                itemList.add(new Item("The Lunch Speical",
                         "Honey Maple Ham, bacon, coleslaw, cheddar " +
                         "cheese, and Russian dressing"));
-                category.addItem(new Item("Somer's Steak Combo", category,
+                itemList.add(new Item("Somer's Steak Combo",
                         "Roast Beef, onions, peppers, melted cheddar and mozzarella cheese"));
-                category.addItem(new Item("Pastrami Reuben", category,
+                itemList.add(new Item("Pastrami Reuben",
                         "Hot Pastrami, sauerkraut, melted Swiss, with Russian dressing"));
-                category.addItem(new Item("Low-fat Reuben", category,
+                itemList.add(new Item("Low-fat Reuben",
                         "Grilled turkey, sauerkraut, alpine lace swiss with Russian dressing"));
-                category.addItem(new Item("Chicken Quesadilla", category,
+                itemList.add(new Item("Chicken Quesadilla",
                         "Grilled chicken in a tortilla with cheddar cheese, lettuce, tomato, " +
                         "and red onions. Served with salsa, sour cream, and jalapeno slices on the side."));
-                category.addItem(new Item("Chicken Fajita", category,
+                itemList.add(new Item("Chicken Fajita",
                         "Grilled chicken wrapped in a tortilla with peppers, onions and cheddar cheese"));
                 break;
             case "Salads":
-                category.addItem(new Item("House Salad", category,
+                itemList.add(new Item("House Salad",
                         "Spring mix, cucumber, tomato, carrots, " +
                         "peppers, choice of dressing"));
-                category.addItem(new Item("Caesar Salad", category,
+                itemList.add(new Item("Caesar Salad",
                         "Romaine, cherry tomato, carrots, peppers, choice of dressing"));
-                category.addItem(new Item("Spinach Salad", category,
+                itemList.add(new Item("Spinach Salad",
                         "Baby spinach, almonds, carrots, choice of dressing"));
-                category.addItem(new Item("Island Salad", category,
+                itemList.add(new Item("Island Salad",
                         "Romaine, dried cranberries, walnuts, lite raspberry dressing"));
                 break;
         }
+        return itemList;
     }
 }

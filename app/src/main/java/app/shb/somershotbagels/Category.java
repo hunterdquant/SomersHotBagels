@@ -1,7 +1,9 @@
 package app.shb.somershotbagels;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by hunter on 4/2/16.
@@ -9,11 +11,15 @@ import java.util.List;
 public class Category {
     private int imageId;
     private String name;
-    private List<Item> items;
 
     public Category(int imageId, String name) {
         this.imageId = imageId;
         this.name = name;
+        buildMapping();
+    }
+
+    private void buildMapping() {
+
     }
 
     public int getImageId() {
@@ -30,15 +36,6 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Item> getItems() {return items;}
-
-    public void addItem(Item item){
-        if (items == null){
-            items = new ArrayList<Item>();
-        }
-        items.add(item);
     }
 
     @Override

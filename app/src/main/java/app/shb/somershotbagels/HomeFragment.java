@@ -32,17 +32,15 @@ public class HomeFragment extends Fragment {
     List<Category> categoryList;
     private Order order;
 
-    public static final String[] CATEGORY_NAMES = {"Beverages", "Bagels", "Breakfast Foods", "Baked Goods", "Wraps", "Sandwiches", "Salads"};
-    public static final int[] IMAGE_IDS = {R.mipmap.beverages, R.mipmap.bagels, R.mipmap.breakfast, R.mipmap.bakedgoods, R.mipmap.wrap, R.mipmap.sandwiches, R.mipmap.salad};
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.home_tab_fragment, container, false);
         categoryList = new ArrayList<Category>();
 
-        for (int i = 0; i < CATEGORY_NAMES.length; i++) {
-            Category category = new Category(IMAGE_IDS[i], CATEGORY_NAMES[i]);
-            MenuRetrieval.buildMenu(category);
+        for (int i = 0; i < MenuRetrieval.CATEGORY_NAMES.length; i++) {
+            Category category = new Category(MenuRetrieval.IMAGE_IDS[i], MenuRetrieval.CATEGORY_NAMES[i]);
             categoryList.add(category);
         }
         listView = (ListView) root.findViewById(R.id.categoryList);
@@ -52,8 +50,7 @@ public class HomeFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 Intent intent = new Intent(getActivity(), ListItemsActivity.class);
                 Gson gson = new Gson();
-                Log.d("srsly", categoryList.get(position).getItems() + " why");
-                intent.putExtra("ITEMS", gson.toJson(categoryList.get(position).getItems()));
+                intent.putExtra("CAT_NUM", position);
                 intent.putExtra("ORDER", gson.toJson(order));
                 startActivity(intent);
             }
