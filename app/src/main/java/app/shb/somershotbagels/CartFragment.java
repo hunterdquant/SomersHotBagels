@@ -2,6 +2,7 @@ package app.shb.somershotbagels;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -107,6 +108,16 @@ public class CartFragment extends Fragment {
                 });
 
                 builder.show();
+            }
+        });
+        Button checkout = (Button) root.findViewById(R.id.checkoutButton);
+        checkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getActivity(), CheckoutActivity.class);
+                Gson gson = new Gson();
+                intent.putExtra("ORDER", gson.toJson(order));
+                startActivity(intent);
             }
         });
 

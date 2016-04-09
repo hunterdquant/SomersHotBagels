@@ -24,7 +24,7 @@
         android:id="@+id/checkoutButton"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="false" />
 
     <Button
         android:layout_width="125dp"
