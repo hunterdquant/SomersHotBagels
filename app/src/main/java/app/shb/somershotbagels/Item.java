@@ -8,6 +8,8 @@ import java.util.List;
  */
 public class Item {
     private String name;
+    private String description;
+    private Category category;
     private List<Option> optionList;
 
     public Item() {
@@ -19,6 +21,21 @@ public class Item {
         this.name = name;
         this.optionList = new ArrayList<Option>();
     }
+
+    public Item(String name, Category category) {
+        this.name = name;
+        this.category = category;
+        this.optionList = new ArrayList<Option>();
+    }
+
+    public Item(String name, Category category, String description){
+        this.name = name;
+        this.category = category;
+        this.optionList = new ArrayList<Option>();
+        this.description = description;
+    }
+
+
 
     public void addOption(Option option) {
         optionList.add(option);
