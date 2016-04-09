@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,6 +28,8 @@ public class FavoriteFragment extends Fragment {
     OrderTransfer orderTransfer;
     private Order order;
     private List<Order> orderList;
+    private List<String> orderNames;
+    private ArrayAdapter<String> arrayAdapter;
     ListView listView;
 
     @Override
@@ -40,15 +43,18 @@ public class FavoriteFragment extends Fragment {
 
         for(String key : keys.keySet()) {
             String json = prefs.getString(key, "");
-            Object obj = gson.fromJson(json, Object.class);
-            if (obj instanceof Order) {
-                orderList.add((Order) obj);
+            Log.d("json", json);
+            try {
+                Order obj = gson.fromJson(json, Order.class);
+                orderList.add(obj);
+            } catch (ClassCastException cce) {
             }
         }
 
-        final List<String> orderNames = getListOfOrderNames();
+        orderNames = new ArrayList<String>();
+        loadOrderNameList();
 
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+        arrayAdapter = new ArrayAdapter<String>(
                 getActivity(),
                 R.layout.list,
                 orderNames );
@@ -63,7 +69,7 @@ public class FavoriteFragment extends Fragment {
                 //Creating the instance of PopupMenu
                 PopupMenu popup = new PopupMenu(getActivity(), listView);
                 //Inflating the Popup using xml file
-                popup.getMenuInflater().inflate(R.menu.history_popup, popup.getMenu());
+                popup.getMenuInflater().inflate(R.menu.favorite_popup, popup.getMenu());
 
                 //registering popup with OnMenuItemClickListener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -97,12 +103,35 @@ public class FavoriteFragment extends Fragment {
         return root;
     }
 
-    private List<String> getListOfOrderNames() {
-        List<String> orderNames = new ArrayList<String>();
+    public void updateList() {
+        refreshOrders();
+        loadOrderNameList();
+        arrayAdapter.notifyDataSetChanged();
+    }
+
+    public void refreshOrders() {
+        orderList.clear();
+
+        final SharedPreferences prefs = orderTransfer.getPrefs();
+        Map<String,?> keys = prefs.getAll();
+        Gson gson = new Gson();
+
+        for(String key : keys.keySet()) {
+            String json = prefs.getString(key, "");
+            Log.d("json", json);
+            try {
+                Order obj = gson.fromJson(json, Order.class);
+                orderList.add(obj);
+            } catch (ClassCastException cce) {
+            }
+        }
+    }
+
+    public void loadOrderNameList() {
+        orderNames.clear();
         for (Order order : orderList) {
             orderNames.add(order.getOrderName());
         }
-        return orderNames;
     }
 
     @Override

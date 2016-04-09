@@ -10,4 +10,5 @@ public interface OrderTransfer {
     public Order getOrder();
     public SharedPreferences getPrefs();
     public void updateCart();
+    public void updateFavorites();
 }

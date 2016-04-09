@@ -89,4 +89,7 @@ public class SHBActivity extends AppCompatActivity implements OrderTransfer {
     public void updateCart() {
         adapter.getCart().updateList();
     }
+    public void updateFavorites() {
+        adapter.getFav().updateList();
+    }
 }

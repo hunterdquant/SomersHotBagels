@@ -25,18 +25,16 @@
         android:text="Checkout"
         android:id="@+id/checkoutButton"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/favoriteButton"
-        android:layout_toStartOf="@+id/favoriteButton" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:text="Favorite"
         android:id="@+id/favoriteButton"
-        android:layout_marginRight="67dp"
-        android:layout_marginEnd="67dp"
-        android:layout_alignTop="@+id/checkoutButton"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

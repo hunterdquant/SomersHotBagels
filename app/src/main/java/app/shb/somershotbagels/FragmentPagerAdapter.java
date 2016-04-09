@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 public class FragmentPagerAdapter extends FragmentStatePagerAdapter {
     int numOfTabs;
     CartFragment cartTab;
+    FavoriteFragment favTab;
     public FragmentPagerAdapter(FragmentManager fm, int numOfTabs) {
         super(fm);;
         this.numOfTabs = numOfTabs;
@@ -20,8 +21,8 @@ public class FragmentPagerAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
-                FavoriteFragment histTab = new FavoriteFragment();
-                return histTab;
+                favTab = new FavoriteFragment();
+                return favTab;
             case 1:
                 HomeFragment homeTab = new HomeFragment();
                 return homeTab;
@@ -40,5 +41,8 @@ public class FragmentPagerAdapter extends FragmentStatePagerAdapter {
 
     public CartFragment getCart() {
         return cartTab;
+    }
+    public FavoriteFragment getFav() {
+        return favTab;
     }
 }

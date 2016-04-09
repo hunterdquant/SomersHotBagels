@@ -35,6 +35,10 @@ public class Order {
         return orderName;
     }
 
+    public void setOrderName(String name) {
+        orderName = name;
+    }
+
     @Override
     public String toString() {
         String s = "";
