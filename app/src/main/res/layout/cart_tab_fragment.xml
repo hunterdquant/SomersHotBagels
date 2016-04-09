@@ -14,17 +14,29 @@
         android:layout_height="wrap_content"
         android:id="@+id/cartList"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/button"
+        android:layout_above="@+id/checkoutButton"
         android:layout_centerHorizontal="true"
         android:paddingLeft="10dp"
         android:paddingRight="10dp" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:text="Proceed to checkout"
-        android:id="@+id/button"
+        android:text="Checkout"
+        android:id="@+id/checkoutButton"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_toLeftOf="@+id/favoriteButton"
+        android:layout_toStartOf="@+id/favoriteButton" />
+
+    <Button
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:text="Favorite"
+        android:id="@+id/favoriteButton"
+        android:layout_marginRight="67dp"
+        android:layout_marginEnd="67dp"
+        android:layout_alignTop="@+id/checkoutButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
