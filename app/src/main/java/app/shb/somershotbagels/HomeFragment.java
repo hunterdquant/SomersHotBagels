@@ -1,15 +1,24 @@
 package app.shb.somershotbagels;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.widget.PopupMenu;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,10 +46,16 @@ public class HomeFragment extends Fragment {
         }
         listView = (ListView) root.findViewById(R.id.categoryList);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, long id){
-                
-            };
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                Intent intent = new Intent(getActivity(), ListItemsActivity.class);
+                Gson gson = new Gson();
+                Log.d("srsly", categoryList.get(position).getItems() + " why");
+                intent.putExtra("ITEMS", gson.toJson(categoryList.get(position).getItems()));
+                intent.putExtra("ORDER", gson.toJson(order));
+                startActivity(intent);
+            }
         });
         ImageTextBaseAdapter adapter = new ImageTextBaseAdapter(getActivity(), categoryList);
         listView.setAdapter(adapter);

@@ -43,7 +43,6 @@ public class FavoriteFragment extends Fragment {
 
         for(String key : keys.keySet()) {
             String json = prefs.getString(key, "");
-            Log.d("json", json);
             try {
                 Order obj = gson.fromJson(json, Order.class);
                 orderList.add(obj);

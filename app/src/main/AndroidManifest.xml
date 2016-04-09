@@ -19,6 +19,9 @@
         <activity android:name=".SHBActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".ListItemsActivity"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
