@@ -51,6 +51,7 @@ public class Item {
     @Override
     public String toString() {
         String s = this.name;
+
         for (Option o : optionList) {
             s += "\n\t\t" + o.toString();
         }

@@ -42,6 +42,7 @@ public class HomeFragment extends Fragment {
 
         for (int i = 0; i < CATEGORY_NAMES.length; i++) {
             Category category = new Category(IMAGE_IDS[i], CATEGORY_NAMES[i]);
+            MenuRetrieval.buildMenu(category);
             categoryList.add(category);
         }
         listView = (ListView) root.findViewById(R.id.categoryList);
