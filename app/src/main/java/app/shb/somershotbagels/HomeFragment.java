@@ -22,8 +22,8 @@ public class HomeFragment extends Fragment {
     List<Category> categoryList;
     private Order order;
 
-    public static final String[] CATEGORY_NAMES = {"Bagels", "Sandwiches", "Beverages", "Other"};
-    public static final int[] IMAGE_IDS = {R.mipmap.bagels, R.mipmap.sandwiches, R.mipmap.beverages, R.mipmap.other};
+    public static final String[] CATEGORY_NAMES = {"Beverages", "Bagels", "Breakfast Foods", "Baked Goods", "Wraps", "Sandwiches", "Salads"};
+    public static final int[] IMAGE_IDS = {R.mipmap.beverages, R.mipmap.bagels, R.mipmap.breakfast, R.mipmap.bakedgoods, R.mipmap.wrap, R.mipmap.sandwiches, R.mipmap.salad};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
