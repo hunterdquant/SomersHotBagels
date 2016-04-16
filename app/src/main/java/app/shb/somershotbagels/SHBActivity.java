@@ -26,8 +26,8 @@ public class SHBActivity extends AppCompatActivity implements OrderTransfer {
         prefs = getPreferences(MODE_PRIVATE);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("History"));
-        tabLayout.addTab(tabLayout.newTab().setText("Home"));
+        tabLayout.addTab(tabLayout.newTab().setText("Favorites"));
+        tabLayout.addTab(tabLayout.newTab().setText("Menu"));
         tabLayout.addTab(tabLayout.newTab().setText("Cart"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 

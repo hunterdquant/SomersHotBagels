@@ -4,12 +4,23 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="?attr/colorPrimary"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    </android.support.v7.widget.Toolbar>
+
     <EditText
         android:id="@+id/userName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Name"
         android:inputType="textAutoComplete"
+        android:imeOptions="actionDone"
         android:layout_marginBottom="10dp"
         />
 
@@ -20,17 +31,19 @@
         android:hint="E-Mail Address"
         android:ems="10"
         android:id="@+id/emailAddress"
+        android:imeOptions="actionDone"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
         />
 
 
     <EditText
-        android:id="@+id/phoneNum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Phone Number"
-        android:inputType="phone"
+        android:id="@+id/phoneNum"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
         android:layout_marginBottom="10dp"
         />
 
@@ -52,11 +65,11 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
         android:ems="10"
         android:hint="Tell Us About Your Experience"
-        android:id="@+id/editText"
+        android:id="@+id/experienceText"
         android:layout_gravity="center_horizontal"
+        android:imeOptions="actionDone"
         android:layout_marginBottom="10dp"
         />
 
@@ -71,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Place Order"
-            android:id="@+id/button"
+            android:id="@+id/orderButton"
             android:layout_gravity="center"
             android:enabled="false" />
         </LinearLayout>
