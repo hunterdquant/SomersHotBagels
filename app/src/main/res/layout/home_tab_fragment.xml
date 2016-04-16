@@ -5,12 +5,10 @@
     android:orientation="vertical">
 
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/categoryList"
-        android:layout_alignParentStart="true"
-        android:layout_centerHorizontal="true"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp" />
+    <FrameLayout
+    android:id="@+id/homeContainer"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    />
+
 </RelativeLayout>

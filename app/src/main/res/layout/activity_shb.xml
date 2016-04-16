@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".SHBActivity">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_layout"
@@ -23,5 +23,11 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_below="@id/tab_layout"/>
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+    </FrameLayout>
 
 </RelativeLayout>
