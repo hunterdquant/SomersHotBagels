@@ -31,6 +31,7 @@ import java.util.List;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        ((AppCompatActivity)getActivity()).getSupportActionBar();
         Bundle bundle = this.getArguments();
         int listIndex = bundle.getInt("LIST_INDEX");
 
