@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -33,6 +35,9 @@ public class CheckoutActivity extends AppCompatActivity{
     private Timer phoneTimer = new Timer();
     private final long DELAY = 750;
     private ReentrantLock lock = new ReentrantLock();
+    private EditText nameEdit;
+    private EditText emailEdit;
+    private EditText phoneEdit;
 
     private class GenericTextWatcher implements TextWatcher{
         private View view;
@@ -121,9 +126,9 @@ public class CheckoutActivity extends AppCompatActivity{
     }
     private void emailChange(String text){
 
-        Pattern phoneNumPattern = Pattern.compile("^\\w+@\\w+.\\w+$");
-        Matcher phoneNumMatcher = phoneNumPattern.matcher(text);
-        if(phoneNumMatcher.find()){
+        Pattern emailPattern = Pattern.compile("^\\w+@\\w+.\\w+$");
+        Matcher emailMatcher = emailPattern.matcher(text);
+        if(emailMatcher.find()){
             emailEnter = true;
         }else{
             runOnUiThread(new Runnable() {
@@ -141,8 +146,13 @@ public class CheckoutActivity extends AppCompatActivity{
             lock.unlock();
         }
     }
+    private String nameS, emailS, phoneS;
     private void enableButton(){
-        placeOrderB.setEnabled(phoneEnter & emailEnter & nameEnter);
+        runOnUiThread(new Runnable(){
+            public void run () {
+                placeOrderB.setEnabled(phoneEnter & emailEnter & nameEnter);
+            }
+        });
     }
 
     @Override
@@ -163,23 +173,42 @@ public class CheckoutActivity extends AppCompatActivity{
             }
         });
 
-        EditText nameEdit = (EditText) findViewById(R.id.userName);
-        EditText emailEdit = (EditText) findViewById(R.id.emailAddress);
-        EditText phoneEdit = (EditText) findViewById(R.id.phoneNum);
+        nameEdit = (EditText) findViewById(R.id.userName);
+        emailEdit = (EditText) findViewById(R.id.emailAddress);
+        phoneEdit = (EditText) findViewById(R.id.phoneNum);
         placeOrderB = (Button) findViewById(R.id.orderButton);
 
         nameEdit.addTextChangedListener(new GenericTextWatcher(nameEdit));
         emailEdit.addTextChangedListener(new GenericTextWatcher(emailEdit));
         phoneEdit.addTextChangedListener(new GenericTextWatcher(phoneEdit));
 
-        RatingBar rateBar = (RatingBar) findViewById(R.id.ratingBar);
-        EditText experienceEdit = (EditText) findViewById(R.id.experienceText);
+
+
         placeOrderB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    Socket socket = new Socket("128.153.191.52", 5969);
-                }catch(Exception e){}
+                Thread t = new Thread(new Runnable() {
+                    public void run() {
+                        Log.d("text", "CLICKED");
+                        try {
+
+                            Socket socket = new Socket("localhost", 5969);
+                            Log.d("text", "ORDERING");
+                            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+                            out.println("<order>");
+                            out.println("Name: " + nameEdit.getText().toString());
+                            out.println("Phone: " + phoneEdit.getText().toString());
+                            out.println("Email: " + emailEdit.getText().toString());
+                            out.println(order.toString());
+                            out.println("</order>");
+                            out.close();
+                            socket.close();
+                        } catch (Exception e) {
+                            Log.d("text", e.toString());
+                        }
+                    }
+                });
+                t.start();
             }
         });
     }
