@@ -1,6 +1,8 @@
 package app.shb.somershotbagels;
 
+import android.content.Context;
 import android.os.Parcelable;
+import android.view.View;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -38,6 +40,12 @@ public class Item {
 
     public String getName() {
         return this.name;
+    }
+
+    public void addOptionsToView(View view, Context context) {
+        for (Option option : optionList) {
+            option.display(view, context);
+        }
     }
 
     @Override
