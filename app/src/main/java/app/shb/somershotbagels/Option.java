@@ -9,10 +9,30 @@ import android.widget.ToggleButton;
 /**
  * Created by hunter on 4/2/16.
  */
-public interface Option {
+public class Option {
 
-    public void display(LinearLayout itemContainer, Context context);
+    public String type;
+    public String optionState;
+
+    public Option() {
+        type = "";
+        optionState = "";
+    }
+
+    public Option(String type) {
+        this.type = type;
+    }
+
+    public void display(LinearLayout itemContainer, Context context) {
+
+    };
 
     @Override
-    public String toString();
+    public String toString() {
+        return type + ": " + optionState;
+    }
+
+    static class OptionInfo {
+
+    }
 }

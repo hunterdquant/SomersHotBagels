@@ -18,11 +18,10 @@ import java.util.List;
 /**
  * Created by Robert on 4/23/2016.
  */
-public class OptionsBagels implements Option{
+public class OptionsBagels {
     Spinner spinner;
     String optionString;
-
-    @Override
+    
     public void display(LinearLayout ll, Context context){
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View element = inflater.inflate(R.layout.spinner, null);
