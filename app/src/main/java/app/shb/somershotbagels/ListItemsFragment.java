@@ -36,7 +36,7 @@ import java.util.List;
 
         ((AppCompatActivity)getActivity()).getSupportActionBar();
         Bundle bundle = this.getArguments();
-        int listIndex = bundle.getInt("LIST_INDEX");
+        final int listIndex = bundle.getInt("LIST_INDEX");
 
         View root = inflater.inflate(R.layout.list_items_fragment, container, false);
 
@@ -49,7 +49,8 @@ import java.util.List;
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 Bundle bundle = new Bundle();
-                bundle.putInt("LIST_INDEX", position);
+                bundle.putInt("LIST_INDEX", listIndex);
+                bundle.putInt("ITEM_INDEX", position);
 
                 ItemEditFragment ief = new ItemEditFragment();
                 ief.setArguments(bundle);
