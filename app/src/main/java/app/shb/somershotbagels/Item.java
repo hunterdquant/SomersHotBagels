@@ -4,7 +4,10 @@ import android.content.Context;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -47,7 +50,15 @@ public class Item {
     }
 
     public void addItemDetails(LinearLayout itemContainer, Context context) {
-        
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View element = inflater.inflate(R.layout.item_name, null);
+        TextView itemName = (TextView) element.findViewById(R.id.itemName);
+        element = inflater.inflate(R.layout.item_description, null);
+        TextView itemDescription = (TextView) element.findViewById(R.id.itemDescription);
+        itemName.setText(name);
+        itemDescription.setText(description);
+        itemContainer.addView(itemName);
+        itemContainer.addView(itemDescription);
     }
 
     public void addOptionsToView(LinearLayout itemContainer, Context context) {
