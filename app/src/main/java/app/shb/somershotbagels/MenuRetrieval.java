@@ -32,9 +32,9 @@ public class MenuRetrieval {
             case "Bagels":
                 Item iter = new Item();
                 itemList.add(new Item("Bagel"));
-                itemList.get(0).addOption(new OptionsQuantity());
-                itemList.get(0).addOption(new OptionsBagels());
-                itemList.get(0).addOption(new OptionsSpreads());
+                itemList.get(0).addOption(new Option());
+                itemList.get(0).addOption(new Option());
+                itemList.get(0).addOption(new Option());
                 itemList.add(new Item("Bagel Pop"));
                 itemList.add(new Item("Kaiser Roll"));
                 itemList.add(new Item("Mini-Bagel"));

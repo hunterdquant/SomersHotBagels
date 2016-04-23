@@ -75,10 +75,10 @@ public class Option {
 
     static class OptionInfo {
         public static String getType(String name) {
-
+            return "";
         }
         public static List<String> getNameList(String name) {
-
+            return null;
         }
     }
 }
