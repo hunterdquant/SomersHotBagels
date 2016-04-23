@@ -2,7 +2,9 @@ package app.shb.somershotbagels;
 
 import android.content.Context;
 import android.os.Parcelable;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -42,9 +44,9 @@ public class Item {
         return this.name;
     }
 
-    public void addOptionsToView(View view, Context context) {
+    public void addOptionsToView(LinearLayout itemContainer, Context context) {
         for (Option option : optionList) {
-            option.display(view, context);
+            option.display(itemContainer, context);
         }
     }
 

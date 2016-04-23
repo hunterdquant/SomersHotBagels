@@ -3,6 +3,7 @@ package app.shb.somershotbagels;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ToggleButton;
 
 /**
@@ -10,7 +11,7 @@ import android.widget.ToggleButton;
  */
 public interface Option {
 
-    public void display(View view, Context context);
+    public void display(LinearLayout itemContainer, Context context);
 
     @Override
     public String toString();
