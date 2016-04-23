@@ -32,12 +32,25 @@ public class MenuRetrieval {
             case "Bagels":
                 Item iter = new Item();
                 itemList.add(new Item("Bagel"));
-                itemList.get(0).addOption(new Option());
-                itemList.get(0).addOption(new Option());
-                itemList.get(0).addOption(new Option());
+                itemList.get(0).addOption(new Option("Quantity"));
+                itemList.get(0).addOption(new Option("Bagel"));
+                itemList.get(0).addOption(new Option("Spread"));
+                itemList.get(0).addOption(new Option("Toasted"));
+                itemList.get(0).addOption(new Option("To-go"));
                 itemList.add(new Item("Bagel Pop"));
+                itemList.get(1).addOption(new Option("Quantity"));
+                itemList.get(1).addOption(new Option("To-go"));
                 itemList.add(new Item("Kaiser Roll"));
+                itemList.get(2).addOption(new Option("Quantity"));
+                itemList.get(2).addOption(new Option("Spread"));
+                itemList.get(2).addOption(new Option("Toasted"));
+                itemList.get(2).addOption(new Option("To-go"));
                 itemList.add(new Item("Mini-Bagel"));
+                itemList.get(3).addOption(new Option("Quantity"));
+                itemList.get(3).addOption(new Option("Mini-Bagel"));
+                itemList.get(3).addOption(new Option("Spread"));
+                itemList.get(3).addOption(new Option("Toasted"));
+                itemList.get(3).addOption(new Option("To-go"));
                 break;
             case "Breakfast Foods":
                 itemList.add(new Item("Bacon, Egg, and Cheese"));
@@ -74,11 +87,31 @@ public class MenuRetrieval {
                 break;
             case "Baked Goods":
                 itemList.add(new Item("Muffin"));
+                itemList.get(0).addOption(new Option("Quantity"));
+                itemList.get(0).addOption(new Option("Muffin"));
+                itemList.get(0).addOption(new Option("Spread"));
+                itemList.get(0).addOption(new Option("Toasted"));
+                itemList.get(0).addOption(new Option("To-go"));
                 itemList.add(new Item("Scone"));
+                itemList.get(1).addOption(new Option("Quantity"));
+                itemList.get(1).addOption(new Option("Scone"));
+                itemList.get(1).addOption(new Option("Spread"));
+                itemList.get(1).addOption(new Option("Toasted"));
+                itemList.get(1).addOption(new Option("To-go"));
                 itemList.add(new Item("Croissant"));
+                itemList.get(2).addOption(new Option("Quantity"));
+                itemList.get(2).addOption(new Option("To-go"));
                 itemList.add(new Item("Apple Turnover"));
+                itemList.get(3).addOption(new Option("Quantity"));
+                itemList.get(3).addOption(new Option("To-go"));
                 itemList.add(new Item("Cinnamon Bun"));
+                itemList.get(4).addOption(new Option("Quantity"));
+                itemList.get(4).addOption(new Option("To-go"));
                 itemList.add(new Item("Black & White Cookie"));
+                itemList.get(5).addOption(new Option("Quantity"));
+                itemList.get(5).addOption(new Option("Size"));
+                itemList.get(5).addOption(new Option("To-go"));
+
                 itemList.add(new Item("Pound Cake"));
                 break;
             case "Wraps":

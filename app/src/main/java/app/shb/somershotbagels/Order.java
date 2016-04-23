@@ -48,7 +48,7 @@ public class Order {
     public String toString() {
         String s = "";
         for (Item item : itemList) {
-            s += item.toString();
+            s += item.toString() + "\n";
         }
         return s;
     }

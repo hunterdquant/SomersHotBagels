@@ -22,7 +22,7 @@ public class Item {
     private List<Option> optionList;
 
     public Item() {
-        this.name = "item";
+        this.name = "";
         this.optionList = new ArrayList<Option>();
         this.description = "";
     }

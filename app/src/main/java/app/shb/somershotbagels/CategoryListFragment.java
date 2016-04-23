@@ -39,7 +39,6 @@ public class CategoryListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.category_list_fragment, container, false);
         categoryList = new ArrayList<Category>();
-        order.addItem(new Item("Item"));
         for (int i = 0; i < MenuRetrieval.CATEGORY_NAMES.length; i++) {
             Category category = new Category(MenuRetrieval.IMAGE_IDS[i], MenuRetrieval.CATEGORY_NAMES[i]);
             categoryList.add(category);

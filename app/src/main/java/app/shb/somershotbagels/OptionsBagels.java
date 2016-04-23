@@ -63,7 +63,6 @@ public class OptionsBagels {
 
     @Override
     public String toString(){
-
         optionString = spinner.getSelectedItem().toString();
         String s = new String();
         s += "Bagel Type: " + optionString;

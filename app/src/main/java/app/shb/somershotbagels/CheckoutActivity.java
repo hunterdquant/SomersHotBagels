@@ -203,6 +203,7 @@ public class CheckoutActivity extends AppCompatActivity{
                             out.println("Name: " + nameEdit.getText().toString());
                             out.println("Phone: " + phoneEdit.getText().toString());
                             out.println("Email: " + emailEdit.getText().toString());
+                            out.println(order.toString());
                             out.println("</order>");
 
 
