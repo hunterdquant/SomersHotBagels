@@ -1,6 +1,7 @@
 package app.shb.somershotbagels;
 
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -17,7 +18,7 @@ public class BagelOptions {
     Spinner bagelTypes;
     Spinner spreads;
     ToggleButton toasted;
-    ToggleButton hereOrTogo;
+    CheckBox eatIn;
     Button saveItem;
 
 
@@ -25,7 +26,7 @@ public class BagelOptions {
     String bagelChoosen;
     String spreadChoosen;
     String toasty;
-    String here;
+    String hereOrTogo;
 
     public List<Integer> getQuantityList(){
         List<Integer> q_list = new ArrayList<Integer>();
@@ -33,6 +34,11 @@ public class BagelOptions {
             q_list.add(i);
         }
         return q_list;
+    }
+    public void init(){
+        toasted.setTextOn("Toasted");
+        toasted.setTextOff("Untoasted");
+        eatIn.setText("Eat In");
     }
     public List<String> getBagelList(){
         List<String> b_list = new ArrayList<String>();
@@ -90,7 +96,7 @@ public class BagelOptions {
         bagelChoosen = bagelTypes.getSelectedItem().toString();
         spreadChoosen = spreads.getSelectedItem().toString();
         toasty = (toasted.isChecked() ? toasted.getTextOn() : toasted.getTextOff()).toString();
-        here = (hereOrTogo.isChecked() ? hereOrTogo.getTextOn() : hereOrTogo.getTextOff()).toString();
+
     }
 
     @Override
@@ -100,7 +106,7 @@ public class BagelOptions {
         s += bagelChoosen + '\n';
         s += spreadChoosen + '\n';
         s += toasty + '\n';
-        s += here;
+        s += hereOrTogo;
         return s;
     }
 }
