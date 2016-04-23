@@ -11,6 +11,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import java.util.List;
+
 /**
  * Created by hunter on 4/2/16.
  */
@@ -31,12 +33,12 @@ public class Option {
     }
 
     public void display(LinearLayout itemContainer, Context context) {
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         switch (viewType) {
             case "spinner":
-                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View element = inflater.inflate(R.layout.spinner, null);
                 final Spinner spinner = (Spinner) element.findViewById(R.id.spinner);
-                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, getNameList(name));
+                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, OptionInfo.getNameList(name));
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(dataAdapter);
                 spinner.setPrompt(name);
@@ -58,6 +60,11 @@ public class Option {
                 itemContainer.addView(text);
                 itemContainer.addView(spinner);
                 break;
+            case "check":
+                break;
+            case "radio":
+                break;
+            default:
         }
     };
 
@@ -70,7 +77,7 @@ public class Option {
         public static String getType(String name) {
 
         }
-        public static String getNameList(String name) {
+        public static List<String> getNameList(String name) {
 
         }
     }
