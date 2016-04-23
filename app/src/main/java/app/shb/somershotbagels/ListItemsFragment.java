@@ -48,6 +48,7 @@ import java.util.List;
                 R.layout.list,
                 itemNames);
         arrayAdapter.setNotifyOnChange(true);
+
         listView.setAdapter(arrayAdapter);
 
         return root;
