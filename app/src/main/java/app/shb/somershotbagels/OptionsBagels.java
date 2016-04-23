@@ -21,7 +21,7 @@ import java.util.List;
 public class OptionsBagels {
     Spinner spinner;
     String optionString;
-    
+
     public void display(LinearLayout ll, Context context){
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View element = inflater.inflate(R.layout.spinner, null);
