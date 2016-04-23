@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by Robert on 4/23/2016.
  */
-public class MiniBagelOptions implements Option{
+public class OptionsSpreads implements Option{
     Spinner spinner;
     String optionString;
 
@@ -27,29 +27,39 @@ public class MiniBagelOptions implements Option{
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item,getList());
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
-        spinner.setPrompt("Mini-Bagels");
+        spinner.setPrompt("Spreads");
         TextView text = new TextView(context);
-        text.setText("Mini-Bagels");
+        text.setText("Spreads");
         text.setTextSize(30);
         ll.addView(text);
         ll.addView(spinner);
-
     }
 
     public List<String> getList(){
-        List<String> b_list = new ArrayList<String>();
-        b_list.add("Everything Mini-Bagel");
-        b_list.add("Plain Mini-Bagel");
-        b_list.add("Poppy Seed Mini-Bagel");
-        b_list.add("Sesame Seed Mini-Bagel");
-        b_list.add ("Cinnamon Raisin Mini-Bagel");
-        return b_list;
+        List<String> s_list = new ArrayList<String>();
+        s_list.add("Plain Cream Cheese");
+        s_list.add("Vegetable Cream Cheese");
+        s_list.add("Scallion Cream Cheese");
+        s_list.add("Cinnamon Raisin Cream Cheese");
+        s_list.add("Vanilla Raisin Cream Cheese");
+        s_list.add("Olive Pimiento Cream Cheese");
+        s_list.add("Strawberry Cream Cheese");
+        s_list.add("Jalapeno Cream Cheese");
+        s_list.add("Nova Cream Cheese");
+        s_list.add("Reduced-Fat Plain Cream Cheese");
+        s_list.add("Reduced-Fat Vegetable Cream Cheese");
+        s_list.add("Butter");
+        s_list.add("Peanut Butter");
+        s_list.add("Strawberry Jelly");
+        s_list.add("Grape Jelly");
+        return s_list;
     }
 
     @Override
     public String toString(){
+        optionString = spinner.getSelectedItem().toString();
         String s = new String();
-        s += "Mini Bagel Type: " + optionString + '\n';
+        s += "Spread: " + optionString;
         return s;
     }
 }
