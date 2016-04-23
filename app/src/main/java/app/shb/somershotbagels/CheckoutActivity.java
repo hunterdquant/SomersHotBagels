@@ -104,7 +104,7 @@ public class CheckoutActivity extends AppCompatActivity{
         }else{
             runOnUiThread(new Runnable() {
                 public void run() {
-                    Toast t = Toast.makeText(CheckoutActivity.this, "Phone Number Not Valid", Toast.LENGTH_LONG);
+                    Toast t = Toast.makeText(CheckoutActivity.this, "Phone Number Not Valid", Toast.LENGTH_SHORT);
                     t.setGravity(Gravity.CENTER, 0, 0);
                     t.show();
                 }
@@ -135,7 +135,7 @@ public class CheckoutActivity extends AppCompatActivity{
         }else{
             runOnUiThread(new Runnable() {
                 public void run() {
-                    Toast t = Toast.makeText(CheckoutActivity.this, "Email Address Not Valid", Toast.LENGTH_LONG);
+                    Toast t = Toast.makeText(CheckoutActivity.this, "Email Address Not Valid", Toast.LENGTH_SHORT);
                     t.setGravity(Gravity.CENTER, 0, 0);
                     t.show();
                 }
@@ -208,7 +208,7 @@ public class CheckoutActivity extends AppCompatActivity{
 
                             runOnUiThread(new Runnable() {
                                 public void run() {
-                                    Toast t = Toast.makeText(CheckoutActivity.this, "Order Received", Toast.LENGTH_LONG);
+                                    Toast t = Toast.makeText(CheckoutActivity.this, "Order Received", Toast.LENGTH_SHORT);
                                     t.setGravity(Gravity.CENTER, 0, 0);
                                     t.show();
                                 }

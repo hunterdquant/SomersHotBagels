@@ -76,7 +76,7 @@ public class FavoriteFragment extends Fragment {
                         if (item.getTitle().equals("Add to cart")) {
                             order.appendOrder(orderList.get(position));
                             orderTransfer.updateCart();
-                            Toast.makeText(getActivity(), "The selected order has been added to the cart.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "The selected order has been added to the cart.", Toast.LENGTH_SHORT).show();
                         } else if (item.getTitle().equals("Remove from history")) {
                             final SharedPreferences.Editor editor = prefs.edit();
                             if (prefs.contains(orderNames.get(position))) {
@@ -86,7 +86,7 @@ public class FavoriteFragment extends Fragment {
                             orderList.remove(position);
                             orderNames.remove(position);
                             arrayAdapter.notifyDataSetChanged();
-                            Toast.makeText(getActivity(), "The selected order has been removed from history.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "The selected order has been removed from history.", Toast.LENGTH_SHORT).show();
                         }
                         return true;
                     }

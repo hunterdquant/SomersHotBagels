@@ -65,7 +65,7 @@ public class CartFragment extends Fragment {
                         if (item.getTitle().equals("Remove")) {
                             order.removeItem(position);
                             orderTransfer.updateCart();
-                            Toast.makeText(getActivity(), "Item removed from the cart.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "Item removed from the cart.", Toast.LENGTH_SHORT).show();
                         }
                         return true;
                     }
