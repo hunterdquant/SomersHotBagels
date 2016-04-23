@@ -1,17 +1,25 @@
 package app.shb.somershotbagels;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +50,16 @@ public class ItemEditFragment extends Fragment{
         LinearLayout itemContainer = (LinearLayout) root.findViewById(R.id.itemEditContainer);
         item.addItemDetails(itemContainer, getContext());
         item.addOptionsToView(itemContainer, getContext());
-
+        View element = inflater.inflate(R.layout.add_to_cart_button, null);
+        Button addToCart = (Button) element.findViewById(R.id.addToCart);
+        addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                order.addItem(item);
+                orderTransfer.updateCart();
+            }
+        });
+        itemContainer.addView(addToCart);
         return root;
     }
 
