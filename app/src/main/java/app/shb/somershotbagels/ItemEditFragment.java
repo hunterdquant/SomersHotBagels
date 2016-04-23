@@ -40,6 +40,7 @@ public class ItemEditFragment extends Fragment{
         View root = inflater.inflate(R.layout.item_edit_fragment, container, false);
         order = orderTransfer.getOrder();
         LinearLayout itemContainer = (LinearLayout) root.findViewById(R.id.itemEditContainer);
+        item.addItemDetails(itemContainer, getContext());
         item.addOptionsToView(itemContainer, getContext());
 
         return root;

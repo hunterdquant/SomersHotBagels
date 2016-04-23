@@ -44,6 +44,10 @@ public class Item {
         return this.name;
     }
 
+    public void addItemDetails(LinearLayout itemContainer, Context context) {
+        
+    }
+
     public void addOptionsToView(LinearLayout itemContainer, Context context) {
         for (Option option : optionList) {
             option.display(itemContainer, context);
