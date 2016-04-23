@@ -30,33 +30,10 @@ public class MenuRetrieval {
                 itemList.add(new Item("Iced Cappuccino"));
                 break;
             case "Bagels":
-               /* itemList.add(new Item("Plain Bagel"));
-                itemList.add(new Item("Poppy Seed Bagel"));
-                itemList.add(new Item("Sesame Seed Bagel"));
-                itemList.add(new Item("Cinnamon Raisin Bagel"));
-                itemList.add(new Item("Everything Bagel"));
-                itemList.add(new Item("Wheat Bagel"));
-                itemList.add(new Item("Wheat Everything Bagel"));
-                itemList.add(new Item("Egg Bagel"));
-                itemList.add(new Item("Egg Everything Bagel"));
-                itemList.add(new Item("Marble Bagel"));
-                itemList.add(new Item("Pumpernickel Bagel"));
-                itemList.add(new Item("Pumpernickel Seasame Bagel"));
-                itemList.add(new Item("7-Grain Bagel"));
-                itemList.add(new Item("Onion Bagel"));
-                itemList.add(new Item("Garlic Bagel"));
-                itemList.add(new Item("Salt Bagel"));
-                itemList.add(new Item("Berry Bagel"));
-                itemList.add(new Item("Baker's Dozen"));*/
                 itemList.add(new Item("Bagel"));
                 itemList.add(new Item("Bagel Pop"));
                 itemList.add(new Item("Kaiser Roll"));
                 itemList.add(new Item("Mini-Bagel"));
-/*                itemList.add(new Item("Everything Mini-Bagel"));
-                itemList.add(new Item("Plain Mini-Bagel"));
-                itemList.add(new Item("Poppy Seed Mini-Bagel"));
-                itemList.add(new Item("Sesame Seed Mini-Bagel"));
-                itemList.add(new Item ("Cinnamon Raisin Mini-Bagel"));*/
                 break;
             case "Breakfast Foods":
                 itemList.add(new Item("Bacon, Egg, and Cheese"));
