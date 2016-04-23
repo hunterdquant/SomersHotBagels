@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by Robert on 4/23/2016.
  */
-public class BagelOptions implements Option{
+public class OptionsBagels implements Option{
     Spinner spinner;
     String optionString;
 
@@ -64,8 +64,10 @@ public class BagelOptions implements Option{
 
     @Override
     public String toString(){
+
+        optionString = spinner.getSelectedItem().toString();
         String s = new String();
-        s += "Bagel Type: " + optionString + '\n';
+        s += "Bagel Type: " + optionString;
         return s;
     }
 }

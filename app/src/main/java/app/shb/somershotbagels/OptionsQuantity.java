@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -15,7 +14,7 @@ import java.util.List;
 /**
  * Created by Robert on 4/23/2016.
  */
-public class QuantityOptions  implements Option{
+public class OptionsQuantity implements Option{
     Spinner spinner;
     String optionString;
 
@@ -43,5 +42,12 @@ public class QuantityOptions  implements Option{
         return q_list;
     }
 
+    @Override
+    public String toString(){
+        optionString = spinner.getSelectedItem().toString();
+        String s = new String();
+        s = "Quantity: " + optionString;
+        return s;
+    }
 }
 
