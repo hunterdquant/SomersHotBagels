@@ -21,11 +21,13 @@ public class Item {
     public Item() {
         this.name = "item";
         this.optionList = new ArrayList<Option>();
+        this.description = "";
     }
 
     public Item(String name) {
         this.name = name;
         this.optionList = new ArrayList<Option>();
+        this.description = "";
     }
 
     public Item(String name, String description){
