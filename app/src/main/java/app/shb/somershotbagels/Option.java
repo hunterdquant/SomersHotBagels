@@ -42,6 +42,9 @@ public class Option {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         switch (viewType) {
             case "spinner": {
+                Log.d("test", name);
+                Log.d("test", viewType);
+                Log.d("test", OptionInfo.getNameList(name).toString());
                 View element = inflater.inflate(R.layout.spinner, null);
                 final Spinner spinner = (Spinner) element.findViewById(R.id.spinner);
                 ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, OptionInfo.getNameList(name));
@@ -120,14 +123,21 @@ public class Option {
         public static String getType(String name) {
             switch(name){
                 case "Bagel":
+                    return "spinner";
                 case "Mini-Bagel":
+                    return "spinner";
                 case "Scone":
+                    return "spinner";
                 case "Muffin":
+                    return "spinner";
                 case "Spread":
+                    return "spinner";
                 case "Coffee":
+                    return "spinner";
                 case "Quantity":
                     return "spinner";
                 case "To-go":
+                    return  "check";
                 case "Toasted":
                     return "check";
                 case "Size":

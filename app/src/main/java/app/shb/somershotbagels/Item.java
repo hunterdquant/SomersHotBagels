@@ -2,6 +2,7 @@ package app.shb.somershotbagels;
 
 import android.content.Context;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -63,6 +64,7 @@ public class Item {
 
     public void addOptionsToView(LinearLayout itemContainer, Context context) {
         for (Option option : optionList) {
+            Log.d("test", option.toString());
             option.display(itemContainer, context);
         }
     }
