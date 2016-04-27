@@ -92,7 +92,10 @@ public class Option {
                     RadioButton radiobutton = new RadioButton(context);
                     radiobutton.setText(radioText.get(i));
                     radiogroup.addView(radiobutton);
-                    radiobutton.setChecked(true);
+                    if (i == 0) {
+                        radiobutton.setChecked(true);
+                        optionState = radiobutton.getText().toString();
+                    }
                 }
                 radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
                     @Override
@@ -101,9 +104,13 @@ public class Option {
                         int idx = radiogroup.indexOfChild(radioButton);
                         RadioButton r = (RadioButton)  radiogroup.getChildAt(idx);
                         optionState = r.getText().toString();
-            }
-        });
-        itemContainer.addView(radiogroup);
+                    }
+                });
+                TextView text = new TextView(context);
+                text.setText(name);
+                text.setTextSize(30);
+                itemContainer.addView(text);
+                itemContainer.addView(radiogroup);
                 break;
             }
             default:
@@ -130,13 +137,45 @@ public class Option {
                     return "spinner";
                 case "Coffee":
                     return "spinner";
+                case "Decaf Coffee":
+                    return "spinner";
+                case "Pound Cake":
+                    return "spinner";
+                case "Cold Cuts":
+                    return "spinner";
+                case "On":
+                    return "spinner";
                 case "Quantity":
                     return "spinner";
                 case "To-go":
                     return  "check";
+                case "Butter":
+                    return "check";
+                case "Cheese":
+                    return "check";
+                case "Salt":
+                    return "check";
+                case "Pepper":
+                    return "check";
+                case "Mustard":
+                    return "check";
+                case "Mayo":
+                    return "check";
+                case "Ketchup":
+                    return "check";
                 case "Toasted":
                     return "check";
+                case "Hot Sauce":
+                    return "check";
+                case "Milk":
+                    return "check";
+                case "Sugar":
+                    return "check";
                 case "Size":
+                    return "radio";
+                case "Chicken Breast":
+                    return "radio";
+                case "Salad":
                     return "radio";
                 default:
                     return "";
@@ -212,6 +251,16 @@ public class Option {
                     popList.add("Pumpkin Spice Muffin");
                     popList.add("Carrot Muffin");
                     return popList;
+                case "Croissant":
+                    popList.add("Plain Croissant");
+                    popList.add("Chocolate-filled Croissant");
+                    popList.add("Strawberry-filled Croissant");
+                    return popList;
+                case "Pound Cake":
+                    popList.add("Butter Cake");
+                    popList.add("Banana Walnut Cake");
+                    popList.add("Carrot Raisin Cake");
+                    return popList;
                 case "Coffee":
                 case "Iced Coffee":
                     popList.add("Regular");
@@ -219,7 +268,7 @@ public class Option {
                     popList.add("Hazelnut");
                     popList.add("Raspberry Chocolate");
                     return popList;
-                case "Decaf":
+                case "Decaf Coffee":
                     popList.add("Plain");
                     popList.add("Hazelnut");
                     return popList;
@@ -249,12 +298,77 @@ public class Option {
                 case "To-go":
                     popList.add("To-go");
                     return popList;
+                case "Mustard":
+                    popList.add("Mustard");
+                case "Mayo":
+                    popList.add("Mayo");
+                case "Ketchup":
+                    popList.add("Ketchup");
                 case "Size":
                     popList.add("Small");
                     popList.add("Large");
                     return popList;
+                case "Salad":
+                    popList.add("None");
+                    popList.add("Veggie Tuna Salad");
+                    popList.add("Egg Salad");
+                    popList.add("Chicken Salad");
+                    return popList;
+                case "Chicken Breast":
+                    popList.add("None");
+                    popList.add("Grilled");
+                    popList.add("Breaded");
+                    return popList;
+                case "Cold Cuts":
+                    popList.add("None");
+                    popList.add("Turkey");
+                    popList.add("Maple Turkey");
+                    popList.add("Cracked Pepper Turkey");
+                    popList.add("Ham");
+                    popList.add("Honey Ham");
+                    popList.add("Roasted Chicken");
+                    popList.add("Buffalo Chicken");
+                    popList.add("Roast Beef");
+                    popList.add("Pastrami");
+                    popList.add("Corned Beef");
+                    popList.add("Bologna");
+                    popList.add("Salami");
+                    return popList;
+                case "Sugar":
+                    popList.add("Sugar");
+                    return popList;
+                case "Milk":
+                    popList.add("Milk");
+                    return popList;
+                case "On":
+                    popList.add("Roll");
+                    popList.add("Wrap");
+                    popList.add("Plate");
+                    popList.add("Plain Bagel");
+                    popList.add("Poppy Seed Bagel");
+                    popList.add("Sesame Seed Bagel");
+                    popList.add("Cinnamon Raisin Bagel");
+                    popList.add("Everything Bagel");
+                    popList.add("Wheat Bagel");
+                    popList.add("Wheat Everything Bagel");
+                    popList.add("Egg Bagel");
+                    popList.add("Egg Everything Bagel");
+                    popList.add("Marble Bagel");
+                    popList.add("Pumpernickel Bagel");
+                    popList.add("Pumpernickel Seasame Bagel");
+                    popList.add("7-Grain Bagel");
+                    popList.add("Onion Bagel");
+                    popList.add("Garlic Bagel");
+                    popList.add("Salt Bagel");
+                    popList.add("Berry Bagel");
+                    return popList;
+                case "Butter":
+                    popList.add("Butter");
+                    return popList;
             }
+
             return null;
         }
     }
 }
+
