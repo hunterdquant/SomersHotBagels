@@ -1,5 +1,8 @@
 package app.shb.somershotbagels;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -146,7 +149,12 @@ public class CheckoutActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 
+                Log.d("text", "BYE");
                 if (checkFields()) {
+                    Log.d("text", "HI");
+                    ConnectivityManager cm = (ConnectivityManager) CheckoutActivity.this.getSystemService(Context.CONNECTIVITY_SERVICE);
+                    NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
                     Thread t = new Thread(new Runnable() {
                         public void run() {
                             Log.d("text", "CLICKED");
@@ -175,7 +183,9 @@ public class CheckoutActivity extends AppCompatActivity{
                                 out.close();
                                 socket.close();
                             } catch (Exception e) {
-                                Log.d("text", e.toString());
+                                Toast t = Toast.makeText(CheckoutActivity.this, "Order Not Received", Toast.LENGTH_SHORT);
+                                t.setGravity(Gravity.CENTER, 0, 0);
+                                t.show();
                             }
                         }
                     });
