@@ -35,7 +35,7 @@ public class ImageTextBaseAdapter extends BaseAdapter {
         if (view == null) {
             view = inflater.inflate(R.layout.category_list_contents, null);
             holder = new Holder();
-            holder.imageView = (ImageView) view.findViewById(R.id.categoryImage);
+            //holder.imageView = (ImageView) view.findViewById(R.id.categoryImage);
             holder.textView = (TextView) view.findViewById(R.id.categoryName);
             view.setTag(holder);
         } else {
@@ -43,7 +43,7 @@ public class ImageTextBaseAdapter extends BaseAdapter {
         }
 
         Category category = (Category) getItem(position);
-        holder.imageView.setImageResource(category.getImageId());
+        //holder.imageView.setImageResource(category.getImageId());
         holder.textView.setText(category.getName());
 
         return view;

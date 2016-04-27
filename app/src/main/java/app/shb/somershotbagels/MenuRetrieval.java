@@ -13,7 +13,7 @@ import java.util.List;
 public class MenuRetrieval {
 
     public static final String[] CATEGORY_NAMES = {"Beverages", "Bagels", "Breakfast Foods", "Baked Goods", "Wraps", "Sandwiches", "Salads"};
-    public static final int[] IMAGE_IDS = {R.mipmap.beverages, R.mipmap.bagels, R.mipmap.breakfast, R.mipmap.bakedgoods, R.mipmap.wrap, R.mipmap.sandwiches, R.mipmap.salad};
+    //public static final int[] IMAGE_IDS = {R.mipmap.beverages, R.mipmap.bagels, R.mipmap.breakfast, R.mipmap.bakedgoods, R.mipmap.wrap, R.mipmap.sandwiches, R.mipmap.salad};
     public static List<Item> retreveCategory(String menuName){
         List<Item> itemList = new ArrayList<Item>();
         switch (menuName) {

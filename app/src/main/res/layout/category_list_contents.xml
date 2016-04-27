@@ -4,12 +4,12 @@
     android:layout_height="fill_parent"
     android:layout_centerHorizontal="true">
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/categoryImage"
-        android:layout_margin="0dp"
-        android:layout_gravity="center_horizontal" />
+    <!--<ImageView-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:id="@+id/categoryImage"-->
+        <!--android:layout_margin="0dp"-->
+        <!--android:layout_gravity="center_horizontal" />-->
 
     <TextView
         android:layout_width="fill_parent"

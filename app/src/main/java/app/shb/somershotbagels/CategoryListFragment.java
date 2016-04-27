@@ -40,7 +40,7 @@ public class CategoryListFragment extends Fragment {
         View root = inflater.inflate(R.layout.category_list_fragment, container, false);
         categoryList = new ArrayList<Category>();
         for (int i = 0; i < MenuRetrieval.CATEGORY_NAMES.length; i++) {
-            Category category = new Category(MenuRetrieval.IMAGE_IDS[i], MenuRetrieval.CATEGORY_NAMES[i]);
+            Category category = new Category(1, MenuRetrieval.CATEGORY_NAMES[i]);
             categoryList.add(category);
         }
         listView = (ListView) root.findViewById(R.id.categoryList);
