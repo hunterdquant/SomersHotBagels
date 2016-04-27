@@ -54,7 +54,7 @@ public class MenuRetrieval {
                 itemList.get(5).addOption(new Option("Sugar"));
                 itemList.get(5).addOption(new Option("Milk"));
                 itemList.get(5).addOption(new Option("To-go"));
-                itemList.add(new Item("Chai Tea"));
+                itemList.add(new Item("Chai"));
                 itemList.get(6).addOption(new Option("Quantity"));
                 itemList.get(6).addOption(new Option("Size"));
                 itemList.get(6).addOption(new Option("Sugar"));
@@ -163,6 +163,10 @@ public class MenuRetrieval {
                     itemList.get(size1).addOption(new Option("To-go"));
                 }
                 itemList.add(new Item("Extras and Sides"));
+                itemList.get(size1).addOption(new Option("Quantity"));
+                itemList.get(size1).addOption(new Option("Extra"));
+                itemList.get(size1).addOption(new Option("Sides"));
+                itemList.get(size1).addOption(new Option("To-go"));
                 break;
             case "Baked Goods":
                 itemList.add(new Item("Muffin"));

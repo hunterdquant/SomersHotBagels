@@ -48,6 +48,7 @@ public class Option {
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(dataAdapter);
                 spinner.setPrompt(name);
+                Log.d("text", name);
                 spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -144,6 +145,12 @@ public class Option {
                 case "Cold Cuts":
                     return "spinner";
                 case "On":
+                    return "spinner";
+                case "Dressing":
+                    return "spinner";
+                case "Extra":
+                    return "spinner";
+                case "Sides":
                     return "spinner";
                 case "Quantity":
                     return "spinner";
@@ -272,8 +279,13 @@ public class Option {
                     popList.add("Plain");
                     popList.add("Hazelnut");
                     return popList;
-                case "Dressing":
+                case "Sides":
                     popList.add("None");
+                    popList.add("Salsa");
+                    popList.add("Sour Cream");
+                case "Dressing":
+                    if (popList.size() == 0)
+                        popList.add("None");
                     popList.add("Bleu Cheese");
                     popList.add("Ranch");
                     popList.add("Honey Mustard");
@@ -365,10 +377,27 @@ public class Option {
                 case "Butter":
                     popList.add("Butter");
                     return popList;
+                case "Extra":
+                    popList.add("None");
+                    popList.add("Ham");
+                    popList.add("Turkey");
+                    popList.add("Bacon (3 slices)");
+                    popList.add("Sausage (1 patty)");
+                    popList.add("Cheese");
+                    popList.add("Egg");
+                    popList.add("Egg White Only");
+                    popList.add("Hash Brown");
+                    popList.add("Onions");
+                    popList.add("Peppers");
+                    popList.add("Tomato");
+                    popList.add("Jalapeno");
+                    popList.add("Hot Peppers");
+                    popList.add("Scallions");
+                    popList.add("Spinach");
+                    return popList;
             }
 
             return null;
         }
     }
 }
-
