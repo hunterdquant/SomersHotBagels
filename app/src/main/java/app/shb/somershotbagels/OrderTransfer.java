@@ -7,8 +7,8 @@ import android.content.SharedPreferences;
  */
 
 public interface OrderTransfer {
-    public Order getOrder();
-    public SharedPreferences getPrefs();
-    public void updateCart();
-    public void updateFavorites();
+    Order getOrder();
+    SharedPreferences getPrefs();
+    void updateCart();
+    void updateFavorites();
 }

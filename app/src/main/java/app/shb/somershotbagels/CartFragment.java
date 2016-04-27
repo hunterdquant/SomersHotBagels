@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.PopupMenu;
 import android.text.InputType;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,25 +19,41 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by hunter on 3/25/16.
+ * Handles the display and functionality of the Cart tab.
+ * @author Hunter Quant, Robert Miller
+ *
  */
 public class CartFragment extends Fragment {
 
+    /*
+      Callback to communicate with the activity.
+      */
     OrderTransfer orderTransfer;
+    /*
+      Reference to the activity's global order.
+     */
     private Order order;
+    /*
+      Cart list view.
+     */
     ListView listView;
+    /*
+      List containing the strings of the items.
+     */
     private List<String> itemList;
+    /*
+      Adapter for the itemList.
+     */
     private ArrayAdapter<String> arrayAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View root = inflater.inflate(R.layout.cart_tab_fragment, container, false);
         listView = (ListView) root.findViewById(R.id.cartList);
         itemList = new ArrayList<String>();
@@ -47,6 +62,7 @@ public class CartFragment extends Fragment {
                 getActivity(),
                 R.layout.list,
                 itemList );
+        // Populate with the list of items in the cart.
         populateItemList();
         arrayAdapter.setNotifyOnChange(true);
 
@@ -62,6 +78,7 @@ public class CartFragment extends Fragment {
                 //registering popup with OnMenuItemClickListener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
+                        // Remove tagged elements.
                         if (item.getTitle().equals("Remove")) {
                             order.removeItem(position);
                             orderTransfer.updateCart();
@@ -78,6 +95,7 @@ public class CartFragment extends Fragment {
         listView.setAdapter(arrayAdapter);
 
         Button favorite = (Button) root.findViewById(R.id.favoriteButton);
+        // Set alert dialog to prompt order save.
         favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,6 +141,10 @@ public class CartFragment extends Fragment {
 
         return root;
     }
+
+    /**
+     * Populates the item list with the contents of the order.
+     */
     private void populateItemList() {
         itemList.clear();
         for (Item item : order.getItems()) {
@@ -130,11 +152,19 @@ public class CartFragment extends Fragment {
         }
     }
 
+    /**
+     * Tell the adapter to refresh.
+     */
     public void updateList() {
         populateItemList();
         arrayAdapter.notifyDataSetChanged();
     }
 
+    /**
+     * Sets the order on activity attachment
+     *
+     * @param context
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
