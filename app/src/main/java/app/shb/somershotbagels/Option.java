@@ -42,9 +42,6 @@ public class Option {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         switch (viewType) {
             case "spinner": {
-                Log.d("test", name);
-                Log.d("test", viewType);
-                Log.d("test", OptionInfo.getNameList(name).toString());
                 View element = inflater.inflate(R.layout.spinner, null);
                 final Spinner spinner = (Spinner) element.findViewById(R.id.spinner);
                 ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, OptionInfo.getNameList(name));
@@ -61,7 +58,6 @@ public class Option {
                     public void onNothingSelected(AdapterView<?> parentView) {
 
                     }
-
                 });
                 TextView text = new TextView(context);
                 text.setText(name);
