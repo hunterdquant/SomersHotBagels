@@ -19,18 +19,68 @@ public class MenuRetrieval {
         switch (menuName) {
             case "Beverages":
                 itemList.add(new Item("Coffee"));
+                itemList.get(0).addOption(new Option("Quantity"));
+                itemList.get(0).addOption(new Option("Coffee"));
+                itemList.get(0).addOption(new Option("Size"));
+                itemList.get(0).addOption(new Option("Sugar"));
+                itemList.get(0).addOption(new Option("Milk"));
+                itemList.get(0).addOption(new Option("To-go"));
                 itemList.add(new Item("Decaf Coffee"));
+                itemList.get(1).addOption(new Option("Quantity"));
+                itemList.get(1).addOption(new Option("Decaf Coffee"));
+                itemList.get(1).addOption(new Option("Size"));
+                itemList.get(1).addOption(new Option("Sugar"));
+                itemList.get(1).addOption(new Option("Milk"));
+                itemList.get(1).addOption(new Option("To-go"));
                 itemList.add(new Item("Tea"));
+                itemList.get(2).addOption(new Option("Quantity"));
+                itemList.get(2).addOption(new Option("Size"));
+                itemList.get(2).addOption(new Option("Sugar"));
+                itemList.get(2).addOption(new Option("Milk"));
+                itemList.get(2).addOption(new Option("To-go"));
                 itemList.add(new Item("Hot Chocolate"));
+                itemList.get(3).addOption(new Option("Quantity"));
+                itemList.get(3).addOption(new Option("Size"));
+                itemList.get(3).addOption(new Option("To-go"));
                 itemList.add(new Item("Espresso"));
+                itemList.get(4).addOption(new Option("Quantity"));
+                itemList.get(4).addOption(new Option("Size"));
+                itemList.get(4).addOption(new Option("Sugar"));
+                itemList.get(4).addOption(new Option("Milk"));
+                itemList.get(4).addOption(new Option("To-go"));
                 itemList.add(new Item("Latte"));
+                itemList.get(5).addOption(new Option("Quantity"));
+                itemList.get(5).addOption(new Option("Size"));
+                itemList.get(5).addOption(new Option("Sugar"));
+                itemList.get(5).addOption(new Option("Milk"));
+                itemList.get(5).addOption(new Option("To-go"));
                 itemList.add(new Item("Chai Tea"));
+                itemList.get(6).addOption(new Option("Quantity"));
+                itemList.get(6).addOption(new Option("Size"));
+                itemList.get(6).addOption(new Option("Sugar"));
+                itemList.get(6).addOption(new Option("Milk"));
+                itemList.get(6).addOption(new Option("To-go"));
                 itemList.add(new Item("Iced Coffee"));
+                itemList.get(7).addOption(new Option("Quantity"));
+                itemList.get(7).addOption(new Option("Coffee"));
+                itemList.get(7).addOption(new Option("Size"));
+                itemList.get(7).addOption(new Option("Sugar"));
+                itemList.get(7).addOption(new Option("Milk"));
+                itemList.get(7).addOption(new Option("To-go"));
                 itemList.add(new Item("Iced Tea"));
+                itemList.get(8).addOption(new Option("Quantity"));
+                itemList.get(8).addOption(new Option("Size"));
+                itemList.get(8).addOption(new Option("Sugar"));
+                itemList.get(8).addOption(new Option("Milk"));
+                itemList.get(8).addOption(new Option("To-go"));
                 itemList.add(new Item("Iced Cappuccino"));
+                itemList.get(9).addOption(new Option("Quantity"));
+                itemList.get(9).addOption(new Option("Size"));
+                itemList.get(9).addOption(new Option("Sugar"));
+                itemList.get(9).addOption(new Option("Milk"));
+                itemList.get(9).addOption(new Option("To-go"));
                 break;
             case "Bagels":
-                Item iter = new Item();
                 itemList.add(new Item("Bagel"));
                 itemList.get(0).addOption(new Option("Quantity"));
                 itemList.get(0).addOption(new Option("Bagel"));
@@ -60,6 +110,21 @@ public class MenuRetrieval {
                 itemList.add(new Item("Egg and Bacon"));
                 itemList.add(new Item("Egg and Ham"));
                 itemList.add(new Item("Egg and Sausage"));
+                int size1 = 0;
+                int size2 = itemList.size();
+                for (; size1 < size2; size1++){
+                    itemList.get(size1).addOption(new Option("Quantity"));
+                    itemList.get(size1).addOption(new Option("Spread"));
+                    itemList.get(size1).addOption(new Option("Toasted"));
+                    itemList.get(size1).addOption(new Option("On"));
+                    itemList.get(size1).addOption(new Option("Cheese"));
+                    itemList.get(size1).addOption(new Option("Ketchup"));
+                    itemList.get(size1).addOption(new Option("Mayo"));
+                    itemList.get(size1).addOption(new Option("Salt"));
+                    itemList.get(size1).addOption(new Option("Pepper"));
+                    itemList.get(size1).addOption(new Option("Hot Sauce"));
+                    itemList.get(size1).addOption(new Option("To-go"));
+                }
                 itemList.add(new Item("Ultimate Sandwich",
                         "Two eggs, bacon sausage, ham, and cheese"));
                 itemList.add(new Item("Breakfast Burrito",
@@ -68,6 +133,11 @@ public class MenuRetrieval {
                         "and salsa on the side"));
                 itemList.add(new Item("Tony's Wrap",
                         "Four egg whites, turkey, spinach, hot peppers, alpine lace Swiss"));
+                size2 = itemList.size();
+                for (; size1 < size2; size1++){
+                    itemList.get(size1).addOption(new Option("Quantity"));
+                    itemList.get(size1).addOption(new Option("To-go"));
+                }
                 itemList.add(new Item("American Omelette",
                         "Three eggs, bacon, tomato, American cheese"));
                 itemList.add(new Item("Italian Omelette",
@@ -84,6 +154,15 @@ public class MenuRetrieval {
                         "Four egg whites, buffalo chicken, onions, provolone, hot sauce, ranch"));
                 itemList.add(new Item("California Breakfast Wrap",
                         "Four egg whites, avocado, bacon, tomato, Swiss"));
+                size2 = itemList.size();
+                for (; size1 < size2; size1++){
+                    itemList.get(size1).addOption(new Option("Quantity"));
+                    itemList.get(size1).addOption(new Option("Bagel"));
+                    itemList.get(size1).addOption(new Option("Toasted"));
+                    itemList.get(size1).addOption(new Option("Butter"));
+                    itemList.get(size1).addOption(new Option("To-go"));
+                }
+                itemList.add(new Item("Extras and Sides"));
                 break;
             case "Baked Goods":
                 itemList.add(new Item("Muffin"));
@@ -100,6 +179,7 @@ public class MenuRetrieval {
                 itemList.get(1).addOption(new Option("To-go"));
                 itemList.add(new Item("Croissant"));
                 itemList.get(2).addOption(new Option("Quantity"));
+                itemList.get(2).addOption(new Option("Croissant"));
                 itemList.get(2).addOption(new Option("To-go"));
                 itemList.add(new Item("Apple Turnover"));
                 itemList.get(3).addOption(new Option("Quantity"));
@@ -111,8 +191,10 @@ public class MenuRetrieval {
                 itemList.get(5).addOption(new Option("Quantity"));
                 itemList.get(5).addOption(new Option("Size"));
                 itemList.get(5).addOption(new Option("To-go"));
-
                 itemList.add(new Item("Pound Cake"));
+                itemList.get(6).addOption(new Option("Quantity"));
+                itemList.get(6).addOption(new Option("Pound Cake"));
+                itemList.get(6).addOption(new Option("To-go"));
                 break;
             case "Wraps":
                 itemList.add(new Item("Cracked Pepper Turkey",
@@ -162,6 +244,11 @@ public class MenuRetrieval {
                 itemList.add(new Item("Spring Wrap",
                         "Grilled chicken, leaf lettuce, avocado, cucumber," +
                         " tomato, and read onion"));
+                int length = itemList.size();
+                for (int p =0; p <length; p++){
+                    itemList.get(p).addOption(new Option("Quantity"));
+                    itemList.get(p).addOption(new Option("To-go"));
+                }
                 break;
             case "Sandwiches":
                 itemList.add(new Item("Veggie Tuna"));
@@ -188,6 +275,16 @@ public class MenuRetrieval {
                         "and red onions. Served with salsa, sour cream, and jalapeno slices on the side."));
                 itemList.add(new Item("Chicken Fajita",
                         "Grilled chicken wrapped in a tortilla with peppers, onions and cheddar cheese"));
+                length =  itemList.size();
+                for (int p =0; p <length; p++){
+                    itemList.get(p).addOption(new Option("Quantity"));
+                    itemList.get(p).addOption(new Option("Toasted"));
+                    itemList.get(p).addOption(new Option("Mustard"));
+                    itemList.get(p).addOption(new Option("Mayo"));
+                    itemList.get(p).addOption(new Option("Ketchup"));
+                    itemList.get(p).addOption(new Option("Hot Sauce"));
+                    itemList.get(p).addOption(new Option("To-go"));
+                }
                 break;
             case "Salads":
                 itemList.add(new Item("House Salad",
@@ -199,7 +296,18 @@ public class MenuRetrieval {
                         "Baby spinach, almonds, carrots, choice of dressing"));
                 itemList.add(new Item("Island Salad",
                         "Romaine, dried cranberries, walnuts, lite raspberry dressing"));
+                length = itemList.size();
+                for (int p = 0; p < length; p++){
+                    itemList.get(p).addOption(new Option("Quantity"));
+                    if (p != length -1)
+                        itemList.get(p).addOption(new Option("Dressing"));
+                    itemList.get(p).addOption(new Option("Chicken Breast"));
+                    itemList.get(p).addOption(new Option("Salad"));
+                    itemList.get(p).addOption(new Option("Cold Cuts"));
+                    itemList.get(p).addOption(new Option("To-go"));
+                }
                 break;
+
         }
         return itemList;
     }
