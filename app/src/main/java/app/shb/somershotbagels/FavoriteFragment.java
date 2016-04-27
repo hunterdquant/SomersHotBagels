@@ -1,17 +1,22 @@
 package app.shb.somershotbagels;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.PopupMenu;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -65,35 +70,49 @@ public class FavoriteFragment extends Fragment {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                //Creating the instance of PopupMenu
-                PopupMenu popup = new PopupMenu(getActivity(), listView);
-                //Inflating the Popup using xml file
-                popup.getMenuInflater().inflate(R.menu.favorite_popup, popup.getMenu());
 
-                //registering popup with OnMenuItemClickListener
-                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    public boolean onMenuItemClick(MenuItem item) {
-                        if (item.getTitle().equals("Add to cart")) {
-                            order.appendOrder(orderList.get(position));
-                            orderTransfer.updateCart();
-                            Toast.makeText(getActivity(), "The selected order has been added to the cart.", Toast.LENGTH_SHORT).show();
-                        } else if (item.getTitle().equals("Remove from history")) {
-                            final SharedPreferences.Editor editor = prefs.edit();
-                            if (prefs.contains(orderNames.get(position))) {
-                                editor.remove(orderNames.get(position));
-                                editor.commit();
-                            }
-                            orderList.remove(position);
-                            orderNames.remove(position);
-                            arrayAdapter.notifyDataSetChanged();
-                            Toast.makeText(getActivity(), "The selected order has been removed from history.", Toast.LENGTH_SHORT).show();
-                        }
-                        return true;
+                final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setCancelable(true);
+                builder.setTitle(orderList.get(position).getOrderName());
+
+                builder.setPositiveButton("Add to cart", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+                        order.appendOrder(orderList.get(position));
+                        orderTransfer.updateCart();
+                        Toast.makeText(getActivity(), "The selected order has been added to the cart.", Toast.LENGTH_SHORT).show();
                     }
-
                 });
 
-                popup.show();//showing popup menu
+                builder.setNeutralButton("Remove", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        final SharedPreferences.Editor editor = prefs.edit();
+                        if (prefs.contains(orderNames.get(position))) {
+                            editor.remove(orderNames.get(position));
+                            editor.commit();
+                        }
+                        orderList.remove(position);
+                        orderNames.remove(position);
+                        arrayAdapter.notifyDataSetChanged();
+                        Toast.makeText(getActivity(), "The selected order has been removed from history.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+
+
+                final AlertDialog dialog = builder.create();
+                dialog.show(); //show() should be called before dialog.getButton().
+
             }
         });
         arrayAdapter.setNotifyOnChange(true);
