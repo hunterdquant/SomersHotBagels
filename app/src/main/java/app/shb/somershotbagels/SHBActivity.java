@@ -6,8 +6,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class SHBActivity extends AppCompatActivity implements OrderTransfer {
 
@@ -22,6 +24,11 @@ public class SHBActivity extends AppCompatActivity implements OrderTransfer {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shb);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.back);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         prefs = getPreferences(MODE_PRIVATE);
 
@@ -56,6 +63,19 @@ public class SHBActivity extends AppCompatActivity implements OrderTransfer {
         });
 
         viewPager.setCurrentItem(1);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (viewPager.getCurrentItem() == 0) {
+                    viewPager.setCurrentItem(1);
+                } else if (viewPager.getCurrentItem() == 2) {
+                    viewPager.setCurrentItem(1);
+                } else {
+                    onBackPressed();
+                }
+            }
+        });
     }
 
     @Override
