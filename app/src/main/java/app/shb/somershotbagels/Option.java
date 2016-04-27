@@ -44,7 +44,7 @@ public class Option {
             case "spinner": {
                 View element = inflater.inflate(R.layout.spinner, null);
                 final Spinner spinner = (Spinner) element.findViewById(R.id.spinner);
-                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, OptionInfo.getNameList(name));
+                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(context, R.layout.spinner_item, OptionInfo.getNameList(name));
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(dataAdapter);
                 spinner.setPrompt(name);

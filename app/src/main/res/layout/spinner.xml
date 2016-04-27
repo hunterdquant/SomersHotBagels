@@ -3,5 +3,7 @@
     android:id="@+id/spinner"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:spinnerMode="dialog"/>
+    android:spinnerMode="dialog"
+    android:minHeight="25dp"
+    android:paddingLeft="15dp"/>
 

@@ -174,6 +174,8 @@ public class CheckoutActivity extends AppCompatActivity{
                 finish();
             }
         });
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
 
         nameEdit = (EditText) findViewById(R.id.userName);
         emailEdit = (EditText) findViewById(R.id.emailAddress);
