@@ -11,11 +11,19 @@ import android.widget.TextView;
 import java.util.List;
 
 /**
- * Created by hunter on 4/4/16.
+ * Adapter for the category list elements.
+ *
+ * @author Hunter Quant, Robert Miller
  */
 public class ImageTextBaseAdapter extends BaseAdapter {
 
+    /*
+      Activity context.
+     */
     Context context;
+    /*
+      A list of categories.
+     */
     List<Category> categoryList;
 
     public ImageTextBaseAdapter(Context context, List<Category> categoryList) {
@@ -23,11 +31,22 @@ public class ImageTextBaseAdapter extends BaseAdapter {
         this.categoryList = categoryList;
     }
 
+    /*
+      Container for views.
+     */
     private class Holder {
         ImageView imageView;
         TextView textView;
     }
 
+    /**
+     * Gets the view corresponding to the position data.
+     *
+     * @param position
+     * @param view
+     * @param parentGroup
+     * @return The view
+     */
     public View getView(int position, View view, ViewGroup parentGroup) {
         Holder holder = null;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(SHBActivity.LAYOUT_INFLATER_SERVICE);
