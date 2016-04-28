@@ -13,7 +13,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RatingBar;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -21,19 +20,17 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import com.google.gson.Gson;
 
 /**
- * Created by Robert on 4/9/2016.
+ * takes an order and gets some user information and sends the order
+ * @author Robert Miller & Hunter Quant
  */
 public class CheckoutActivity extends AppCompatActivity{
     private Order order;
-
     private Button placeOrderB;
     private boolean nameEnter = false, phoneEnter = false, emailEnter = false;
     private boolean nameBool = false, phoneBool = false, emailBool = false;
@@ -43,7 +40,10 @@ public class CheckoutActivity extends AppCompatActivity{
     private EditText phoneEdit;
 
 
-
+    /**
+     * compares entered text with regular expression of phone number
+     * @param text - the text in the phone edit text box
+     */
     private void phoneChange(String text){
         Pattern phoneNumPattern = Pattern.compile("^([(]?[2-9]\\d{2}\\s?[)|-]\\s?\\d{3}\\s?-\\s?\\d{4}" +
                 "|\\d{3}\\s?-\\s?\\d{4}" +
@@ -56,9 +56,18 @@ public class CheckoutActivity extends AppCompatActivity{
             phoneEnter = false;
         }
     }
+
+    /**
+     * returns true because name is only used for identification on pickup
+     */
     private void nameChange(){
         nameEnter = true;
     }
+
+    /**
+     * compares entered text with email regular expression
+     * @param text - the text in the email edit text box
+     */
     private void emailChange(String text){
         Pattern emailPattern = Pattern.compile("^\\w+@\\w+\\.\\w+$");
         Matcher emailMatcher = emailPattern.matcher(text);
@@ -70,6 +79,10 @@ public class CheckoutActivity extends AppCompatActivity{
 
     }
     private String nameS, emailS, phoneS;
+
+    /**
+     * enables the button if the phone, email, and name edit texts have info in them
+     */
     private void enableButton(){
         runOnUiThread(new Runnable(){
             public void run () {
@@ -77,6 +90,11 @@ public class CheckoutActivity extends AppCompatActivity{
             }
         });
     }
+
+    /**
+     * checks if user entered fields are valid
+     * @return true if all the fields are entered correctly
+     */
     private boolean checkFields(){
         return emailEnter & nameEnter & phoneEnter;
     }
@@ -91,13 +109,14 @@ public class CheckoutActivity extends AppCompatActivity{
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.back);
+        //listens for the back press
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("text", "back pressed");
                 finish();
             }
         });
+
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
@@ -106,6 +125,7 @@ public class CheckoutActivity extends AppCompatActivity{
         phoneEdit = (EditText) findViewById(R.id.phoneNum);
         placeOrderB = (Button) findViewById(R.id.orderButton);
 
+        //detects if edit text is changed
         nameEdit.addTextChangedListener(new TextWatcher(){
             @Override
             public void afterTextChanged(Editable s){
@@ -118,6 +138,8 @@ public class CheckoutActivity extends AppCompatActivity{
             @Override
             public void onTextChanged(CharSequence s, int start, int count, int after){}
         });
+
+        //detects if edit text is changed
         emailEdit.addTextChangedListener(new TextWatcher(){
             @Override
             public void afterTextChanged(Editable s){
@@ -130,6 +152,8 @@ public class CheckoutActivity extends AppCompatActivity{
             @Override
             public void onTextChanged(CharSequence s, int start, int count, int after){}
         });
+
+        //detects if edit text is changed
         phoneEdit.addTextChangedListener(new TextWatcher(){
             @Override
             public void afterTextChanged(Editable s){
@@ -144,24 +168,21 @@ public class CheckoutActivity extends AppCompatActivity{
         });
 
 
-
+        //sends order if everything is in order
+        //if not then a toast tells the user what was wrong
         placeOrderB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Log.d("text", "BYE");
                 if (checkFields()) {
-                    Log.d("text", "HI");
                     ConnectivityManager cm = (ConnectivityManager) CheckoutActivity.this.getSystemService(Context.CONNECTIVITY_SERVICE);
                     NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 
                     Thread t = new Thread(new Runnable() {
                         public void run() {
-                            Log.d("text", "CLICKED");
                             try {
+                                //sending order
                                 InetAddress i = InetAddress.getByName("cisco09122.townhouse.clarkson.edu");
                                 Socket socket = new Socket(i, 5969);
-                                Log.d("text", "ORDERING");
                                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
                                 BufferedReader in = new BufferedReader(
                                         new InputStreamReader(socket.getInputStream()));
@@ -172,7 +193,7 @@ public class CheckoutActivity extends AppCompatActivity{
                                 out.println(order.toString());
                                 out.println("</order>");
 
-
+                                //toast to tell user
                                 runOnUiThread(new Runnable() {
                                     public void run() {
                                         Toast t = Toast.makeText(CheckoutActivity.this, "Order Received", Toast.LENGTH_SHORT);
@@ -183,6 +204,7 @@ public class CheckoutActivity extends AppCompatActivity{
                                 out.close();
                                 socket.close();
                             } catch (Exception e) {
+                                //order did not send/receive
                                 Toast t = Toast.makeText(CheckoutActivity.this, "Order Not Received", Toast.LENGTH_SHORT);
                                 t.setGravity(Gravity.CENTER, 0, 0);
                                 t.show();
@@ -193,6 +215,8 @@ public class CheckoutActivity extends AppCompatActivity{
                 }else{
                     runOnUiThread(new Runnable() {
                         public void run() {
+                            //user entered info is incorrect
+                            //toasts what was wrong
                             Toast t = Toast.makeText(CheckoutActivity.this, "", Toast.LENGTH_SHORT);
                             t.setGravity(Gravity.BOTTOM, 0, 0);
                             if (nameEnter == false){
