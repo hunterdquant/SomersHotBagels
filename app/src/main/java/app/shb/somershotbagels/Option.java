@@ -14,19 +14,29 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by hunter on 4/2/16.
+ * Represents a option to be attached to a item.
+ *
+ * @author Hunter Quant, Robert Miller
  */
 public class Option {
 
-    public String name;
-    public String viewType;
-    public String optionState;
+    /*
+      The name of the option.
+     */
+    private String name;
+    /*
+      The type of view the option corresponds to.
+     */
+    private String viewType;
+    /*
+      A string representation of the option state.
+     */
+    private String optionState;
 
     public Option() {
         viewType = "";
@@ -38,8 +48,16 @@ public class Option {
         viewType = OptionInfo.getType(name);
     }
 
+    /**
+     * Adds the option with its appropriate view to the linear layout.
+     *
+     * @param itemContainer
+     * @param context
+     */
     public void display(LinearLayout itemContainer, Context context) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        // Adds the view with the right view type to the layout.
         switch (viewType) {
             case "spinner": {
                 View element = inflater.inflate(R.layout.spinner, null);
@@ -123,7 +141,17 @@ public class Option {
         return name + ": " + optionState;
     }
 
+    /**
+     * Retrieves information about a option type.
+     */
     static class OptionInfo {
+
+        /**
+         * Returns the viewType.
+         *
+         * @param name
+         * @return
+         */
         public static String getType(String name) {
             switch(name){
                 case "Bagel":
@@ -189,6 +217,13 @@ public class Option {
             }
 
         }
+
+        /**
+         * Returns a list of strangs containing all choices for a option.
+         *
+         * @param name
+         * @return
+         */
         public static List<String> getNameList(String name) {
             List<String> popList = new ArrayList<String>();
             switch(name){
