@@ -3,13 +3,26 @@ package app.shb.somershotbagels;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
- * Created by Robert on 4/9/2016.
+ * @author Robert Miller & Hunter Quant
+ * gets the menu items from a specific category
  */
 public class MenuRetrieval {
-
+    /**
+     * @param CATEGORY_NAMES - the category names
+     * @param IMAGE_IDS - the image ides
+     * don't know if we actual need them
+     */
     public static final String[] CATEGORY_NAMES = {"Beverages", "Bagels", "Breakfast Foods", "Baked Goods", "Wraps", "Sandwiches", "Salads"};
     public static final int[] IMAGE_IDS = {R.mipmap.beverages, R.mipmap.bagels, R.mipmap.breakfast, R.mipmap.bakedgoods, R.mipmap.wrap, R.mipmap.sandwiches, R.mipmap.salad};
+
+    /**
+     * adds options to all the items in a category
+     * sorry it is a terrible mess to look at :(
+     * @param menuName
+     * @return the list of items from the specified category with options associated with them
+     */
     public static List<Item> retreveCategory(String menuName){
         List<Item> itemList = new ArrayList<Item>();
         switch (menuName) {
