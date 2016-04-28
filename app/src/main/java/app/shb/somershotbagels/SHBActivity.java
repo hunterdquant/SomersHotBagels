@@ -118,17 +118,30 @@ public class SHBActivity extends AppCompatActivity implements OrderTransfer {
         }
     }
 
+    /**
+     * @return The cart.
+     */
     public Order getOrder() {
         return order;
     }
 
+    /**
+     * @return the storage access.
+     */
     public SharedPreferences getPrefs() {
         return prefs;
     }
 
+    /**
+     * Update the information in the cart.
+     */
     public void updateCart() {
         adapter.getCart().updateList();
     }
+
+    /**
+     * Update the information in the favorites.
+     */
     public void updateFavorites() {
         adapter.getFav().updateList();
     }
