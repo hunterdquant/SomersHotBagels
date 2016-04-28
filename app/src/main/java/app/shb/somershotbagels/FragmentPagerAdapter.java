@@ -5,12 +5,25 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 /**
- * Created by hunter on 3/25/16.
+ * Handles the display and functionality of the favorite fragment.
+ *
+ * @author Hunter Quant, Robert Miller
  */
 public class FragmentPagerAdapter extends FragmentStatePagerAdapter {
+
+    /*
+      The number of tabs.
+     */
     int numOfTabs;
+    /*
+      A reference to the cart tab fragment.
+     */
     CartFragment cartTab;
+    /*
+      A reference to the favorite fragment.
+     */
     FavoriteFragment favTab;
+
     public FragmentPagerAdapter(FragmentManager fm, int numOfTabs) {
         super(fm);;
         this.numOfTabs = numOfTabs;
@@ -39,9 +52,16 @@ public class FragmentPagerAdapter extends FragmentStatePagerAdapter {
         return numOfTabs;
     }
 
+    /**
+     * @return The cart fragment.
+     */
     public CartFragment getCart() {
         return cartTab;
     }
+
+    /**
+     * @return The favorite fragment.
+     */
     public FavoriteFragment getFav() {
         return favTab;
     }
