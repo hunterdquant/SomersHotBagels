@@ -1,38 +1,36 @@
 package app.shb.somershotbagels;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Created by hunter on 4/23/16.
+ * Handles the display and functionality of the item edit fragment.
+ *
+ * @author Hunter Quant, Robert Miller
  */
 public class ItemEditFragment extends Fragment{
 
+    /*
+      Callback to communicate with the activity.
+      */
     OrderTransfer orderTransfer;
+    /*
+      Reference to the activity's global order.
+     */
     private Order order;
+    /*
+      The item being edited.
+     */
     private Item item;
 
     @Override
@@ -54,6 +52,8 @@ public class ItemEditFragment extends Fragment{
         item.addOptionsToView(itemContainer, getContext());
         View element = inflater.inflate(R.layout.add_to_cart_button, null);
         Button addToCart = (Button) element.findViewById(R.id.addToCart);
+
+        // Add the item to cart with its modified options.
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,6 +68,11 @@ public class ItemEditFragment extends Fragment{
         return root;
     }
 
+    /**
+     * Sets the order on activity attachment
+     *
+     * @param context
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
