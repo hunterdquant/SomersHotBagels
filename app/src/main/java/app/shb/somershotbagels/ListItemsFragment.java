@@ -1,12 +1,9 @@
 package app.shb.somershotbagels;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,21 +11,27 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by hunter on 4/9/16.
+ * Handles the display and functionality of the list items fragment.
+ *
+ * @author Hunter Quant, Robert Miller
  */
-    public class ListItemsFragment extends Fragment {
+public class ListItemsFragment extends Fragment {
 
-    OrderTransfer orderTransfer;
+    /*
+      THe list view.
+     */
     ListView listView;
-    private Order order;
+    /*
+      The list of items in a category.
+     */
     private List<Item> itemList;
+    /*
+      The list of item names.
+     */
     private List<String> itemNames;
 
     @Override
@@ -41,9 +44,10 @@ import java.util.List;
         View root = inflater.inflate(R.layout.list_items_fragment, container, false);
 
         itemList = MenuRetrieval.retreveCategory(MenuRetrieval.CATEGORY_NAMES[listIndex]);
-        order = orderTransfer.getOrder();
 
         listView = (ListView) root.findViewById(R.id.itemListActivity);
+
+        // Fragment transaction on item click with the appropriate item.
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -74,20 +78,12 @@ import java.util.List;
         return root;
     }
 
+    /**
+     * Populates the item name list with the item names.
+     */
     private void populateItemNames() {
         for (Item item : itemList) {
             itemNames.add(item.getName());
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        try {
-            orderTransfer = (OrderTransfer) context;
-            order = ((OrderTransfer) context).getOrder();
-        } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement OnArticleSelectedListener");
         }
     }
 }
