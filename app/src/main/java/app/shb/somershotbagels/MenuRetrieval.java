@@ -6,10 +6,6 @@ import java.util.List;
 /**
  * Created by Robert on 4/9/2016.
  */
-
-
-
-//TODO - add options to the items
 public class MenuRetrieval {
 
     public static final String[] CATEGORY_NAMES = {"Beverages", "Bagels", "Breakfast Foods", "Baked Goods", "Wraps", "Sandwiches", "Salads"};
