@@ -6,20 +6,39 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+/**
+ * The main application activity.
+ *
+ * @author Hunter Quant, Robert Miller
+ */
 public class SHBActivity extends AppCompatActivity implements OrderTransfer {
 
+    /*
+      The current order.
+     */
     private Order order;
+    /*
+      The local storage access to save and load orders.
+     */
     SharedPreferences prefs;
+    /*
+      Fragment pager.
+     */
     FragmentPagerAdapter adapter;
+
+    /*
+      The view pager.
+     */
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        // Create the cart.
         order = new Order();
 
         super.onCreate(savedInstanceState);
@@ -38,7 +57,7 @@ public class SHBActivity extends AppCompatActivity implements OrderTransfer {
         tabLayout.addTab(tabLayout.newTab().setText("Cart"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPager= (ViewPager) findViewById(R.id.pager);
+        viewPager = (ViewPager) findViewById(R.id.pager);
         adapter = new FragmentPagerAdapter(
                 getSupportFragmentManager(),
                 tabLayout.getTabCount()
@@ -64,16 +83,11 @@ public class SHBActivity extends AppCompatActivity implements OrderTransfer {
 
         viewPager.setCurrentItem(1);
 
+        // Sets navigation functionality of back button.
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (viewPager.getCurrentItem() == 0) {
-                    viewPager.setCurrentItem(1);
-                } else if (viewPager.getCurrentItem() == 2) {
-                    viewPager.setCurrentItem(1);
-                } else {
-                    onBackPressed();
-                }
+                onBackPressed();
             }
         });
     }
@@ -91,6 +105,17 @@ public class SHBActivity extends AppCompatActivity implements OrderTransfer {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (viewPager.getCurrentItem() == 0) {
+            viewPager.setCurrentItem(1);
+        } else if (viewPager.getCurrentItem() == 2) {
+            viewPager.setCurrentItem(1);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     public Order getOrder() {
