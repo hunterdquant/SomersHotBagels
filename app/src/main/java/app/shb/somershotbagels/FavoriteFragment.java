@@ -27,14 +27,35 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by hunter on 3/25/16.
+ * Handles the display and functionality of the favorite fragment.
+ *
+ * @author Hunter Quant, Robert Miller
  */
 public class FavoriteFragment extends Fragment {
+
+    /*
+      Callback to communicate with the activity.
+     */
     OrderTransfer orderTransfer;
+    /*
+      Reference to the activity's global order.
+     */
     private Order order;
+    /*
+      A list of orders.
+     */
     private List<Order> orderList;
+    /*
+      A list of the order names.
+     */
     private List<String> orderNames;
+    /*
+      List adapter.
+     */
     private ArrayAdapter<String> arrayAdapter;
+    /*
+      A list view.
+     */
     ListView listView;
 
     @Override
@@ -42,6 +63,7 @@ public class FavoriteFragment extends Fragment {
 
         orderList = new ArrayList<Order>();
 
+        // Load all saved orders from local storage.
         final SharedPreferences prefs = orderTransfer.getPrefs();
         Map<String,?> keys = prefs.getAll();
         Gson gson = new Gson();
@@ -66,6 +88,8 @@ public class FavoriteFragment extends Fragment {
         View root = inflater.inflate(R.layout.favorite_tab_fragment, container, false);
 
         listView = (ListView) root.findViewById(R.id.historyList);
+
+        // On item click prompt with alert dialog to let them add to cart or delete.
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -121,12 +145,18 @@ public class FavoriteFragment extends Fragment {
         return root;
     }
 
+    /**
+     * Updates the list view.
+     */
     public void updateList() {
         refreshOrders();
         loadOrderNameList();
         arrayAdapter.notifyDataSetChanged();
     }
 
+    /**
+     * Refreshes the order list.
+     */
     public void refreshOrders() {
         orderList.clear();
 
@@ -145,6 +175,9 @@ public class FavoriteFragment extends Fragment {
         }
     }
 
+    /**
+     * Populates the order name list.
+     */
     public void loadOrderNameList() {
         orderNames.clear();
         for (Order order : orderList) {
@@ -152,6 +185,11 @@ public class FavoriteFragment extends Fragment {
         }
     }
 
+    /**
+     * Sets the order on activity attachment
+     *
+     * @param context
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
