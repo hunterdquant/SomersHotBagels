@@ -1,25 +1,31 @@
 package app.shb.somershotbagels;
 
 import android.content.Context;
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by hunter on 4/2/16.
+ * Represents a item.
+ *
+ * @author Hunter Quant, Robert Miller
  */
 public class Item {
+
+    /*
+      The item name.
+     */
     private String name;
+    /*
+      The item description.
+     */
     private String description;
+    /*
+      A list of options for the item.
+     */
     private List<Option> optionList;
 
     public Item() {
@@ -40,16 +46,28 @@ public class Item {
         this.description = description;
     }
 
-
-
+    /**
+     * Adds a option to a item.
+     *
+     * @param option the option to be added to the item.
+     */
     public void addOption(Option option) {
         optionList.add(option);
     }
 
+    /**
+     * @return the name of the item.
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Sets the views for name and description.
+     *
+     * @param itemContainer the linear layout to add to.
+     * @param context
+     */
     public void addItemDetails(LinearLayout itemContainer, Context context) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View element = inflater.inflate(R.layout.item_name, null);
@@ -62,9 +80,14 @@ public class Item {
         itemContainer.addView(itemDescription);
     }
 
+    /**
+     * Adds all options to the linear layout..
+     *
+     * @param itemContainer the item container.
+     * @param context
+     */
     public void addOptionsToView(LinearLayout itemContainer, Context context) {
         for (Option option : optionList) {
-            Log.d("test", option.toString());
             option.display(itemContainer, context);
         }
     }
